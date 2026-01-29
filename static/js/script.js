@@ -89,6 +89,7 @@ function removerFoco() {
 
 //_____________________ Final do frontend_____________________//
 
+
 document.addEventListener("DOMContentLoaded", () => {
   // Dark Mode Sync (Desktop e Mobile)
   const switches = ["darkMode", "darkModeMobile"];
@@ -120,89 +121,90 @@ function switchTab(element, tabName) {
   console.log("Mudando para a aba: " + tabName);
 }
 
+// Conversor de moedas com logs extras
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(
-    "[Moedas] DOM totalmente carregado. Iniciando script de conversão...",
-  );
-  const amountInput = document.getElementById("currency-amount");
-  const fromSelect = document.getElementById("currency-from");
-  const toSelect = document.getElementById("currency-to");
-  const resultSpan = document.getElementById("currency-result");
+    console.log("[Moedas] DOM totalmente carregado. Iniciando script de conversão...");
 
-  // Verificação para depuração
-  if (!amountInput)
-    console.error("[Moedas] ERRO: #currency-amount não encontrado");
-  if (!fromSelect)
-    console.error("[Moedas] ERRO: #currency-from não encontrado");
-  if (!toSelect) console.error("[Moedas] ERRO: #currency-to não encontrado");
-  if (!resultSpan)
-    console.error("[Moedas] ERRO: #currency-result não encontrado");
+    const amountInput = document.getElementById("currency-amount");
+    const fromSelect  = document.getElementById("currency-from");
+    const toSelect    = document.getElementById("currency-to");
+    const resultSpan  = document.getElementById("currency-result");
 
-  if (!amountInput || !fromSelect || !toSelect || !resultSpan) {
-    console.warn(
-      "[Moedas] Um ou mais elementos essenciais não foram encontrados. Script parado.",
-    );
-    console.log(
-      "Dica: Verifique se está na view correta (mobile ou desktop) e se os IDs batem exatamente.",
-    );
-    return;
-  }
+    console.log("[DEBUG] amountInput encontrado?", !!amountInput);
+    console.log("[DEBUG] fromSelect encontrado?", !!fromSelect);
+    console.log("[DEBUG] toSelect encontrado?", !!toSelect);
+    console.log("[DEBUG] resultSpan encontrado?", !!resultSpan);
 
-  console.log("[Moedas] Todos os elementos encontrados com sucesso!");
-
-  async function convertCurrency() {
-    console.log("[Moedas] Função convertCurrency chamada");
-
-    const value = parseFloat(amountInput.value);
-
-    if (isNaN(value) || value <= 0) {
-      resultSpan.innerText = "--";
-      console.log("[Moedas] Valor inválido ou vazio → resetando resultado");
-      return;
+    if (!amountInput || !fromSelect || !toSelect || !resultSpan) {
+        console.error("[Moedas] ERRO: Um ou mais elementos não encontrados");
+        return;
     }
 
-    console.log(
-      `[Moedas] Convertendo ${value} de ${fromSelect.value} para ${toSelect.value}`,
-    );
+    console.log("[TESTE] Script passou ANTES da função convertCurrency");
 
-    try {
-      const response = await fetch("/api/currency/convert", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount: value,
-          from: fromSelect.value,
-          to: toSelect.value,
-        }),
-      });
+    async function convertCurrency() {
+        console.log("[TESTE] convertCurrency ENTROU");        
 
-      if (!response.ok) {
-        throw new Error(`Erro HTTP ${response.status}`);
-      }
+        console.log("[DEBUG] Valor atual do input:", amountInput.value);
 
-      const data = await response.json();
-      console.log("[Moedas] Resposta da API:", data);
+        const value = parseFloat(amountInput.value);
 
-      resultSpan.innerText = ` ${data.result.toFixed(2)} ${toSelect.value}`;
-    } catch (error) {
-      console.error("[Moedas] Erro na conversão:", error);
-      resultSpan.innerText = "Erro na conversão";
+        if (isNaN(value) || value <= 0) {
+            console.log("[Moedas] Valor inválido ou vazio → resetando resultado");
+            resultSpan.innerText = "--";
+            return;
+        }
+
+        console.log(`[Moedas] Convertendo ${value} de ${fromSelect.value} para ${toSelect.value}`);
+
+        try {
+            console.log("[DEBUG] Enviando fetch para /api/currency/convert");
+            const response = await fetch("/api/currency/convert", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    amount: value,
+                    from: fromSelect.value,
+                    to: toSelect.value,
+                }),
+            });
+
+            console.log("[DEBUG] Resposta recebida, status:", response.status);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.log("[DEBUG] Erro na resposta:", errorText);
+                throw new Error(`Erro HTTP ${response.status}: ${errorText}`);
+            }
+
+            const data = await response.json();
+            console.log("[Moedas] Resposta da API:", data);
+
+            resultSpan.innerText = `${data.result.toFixed(2)} ${toSelect.value}`;
+            console.log("[DEBUG] Resultado atualizado na tela:", resultSpan.innerText);
+
+        } catch (error) {
+            console.error("[Moedas] Erro na conversão:", error);
+            resultSpan.innerText = "Erro na conversão";
+        }
     }
-  }
-  // Eventos
-  amountInput.addEventListener("input", () => {
-    console.log("[Moedas] Evento: input no valor");
-    convertCurrency();
-  });
+    document.addEventListener("input", (e) => {
+        if (e.target.id === "currency-amount") {
+        console.log("[DEBUG] input detectado via delegation");
+        convertCurrency();
+        }
+    });
 
-  fromSelect.addEventListener("change", () => {
-    console.log("[Moedas] Evento: mudança na moeda de origem");
-    convertCurrency();
-  });
-
-  toSelect.addEventListener("change", () => {
-    console.log("[Moedas] Evento: mudança na moeda de destino");
-    convertCurrency();
-  });
-  convertCurrency();
+    document.addEventListener("change", (e) => {
+        if (
+            e.target.id === "currency-from" ||
+            e.target.id === "currency-to"
+        ) {
+        console.log("[DEBUG] select detectado via delegation");
+        convertCurrency();
+        }
+    });
 });
+
+
+

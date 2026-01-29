@@ -16,219 +16,6 @@
   </head>
   <body>
     <div id="overlay-fundo" onclick="removerFoco()"></div>
-    <div class="app-container d-md-none">
-      <div class="tab-bar">
-        <button class="tab-item active" onclick="switchTab(this, 'home')">
-          <span class="tab-icon">🏠</span>
-          <span class="tab-label">Início</span>
-        </button>
-        <button class="tab-item" onclick="switchTab(this, 'fav')">
-          <span class="tab-icon">⭐</span>
-          <span class="tab-label">Favoritos</span>
-        </button>
-        <button class="tab-item" onclick="switchTab(this, 'history')">
-          <span class="tab-icon">🕒</span>
-          <span class="tab-label">Histórico</span>
-        </button>
-        <button class="tab-item" onclick="switchTab(this, 'settings')">
-          <span class="tab-icon">⚙️</span>
-          <span class="tab-label">Ajustes</span>
-        </button>
-      </div>
-      <div class="app-header">
-        <h1 class="app-logo">Convertify</h1>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="darkModeMobile" />
-        </div>
-      </div>
-
-      <div class="premium-card card-glow-green" onclick="toggleCard(this)">
-        <div class="card-main">
-          <div class="icon-circle bg-green">S</div>
-          <span class="card-title">Moedas</span>
-          <div class="chevron"></div>
-        </div>
-        <div class="card-expandable">
-          <hr />
-          <input
-            type="number"
-            class="premium-input"
-            placeholder="0.00"
-            inputmode="decimal"
-          />
-          <div class="d-flex gap-2 mt-2">
-            <select class="premium-select w-100">
-              <option>BRL</option>
-              <option>USD</option>
-            </select>
-            <select class="premium-select w-100">
-              <option>USD</option>
-              <option>BRL</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="premium-card card-glow-orange" onclick="toggleCard(this)">
-        <div class="card-main">
-          <div class="icon-circle bg-orange">🌡️</div>
-          <span class="card-title">Temperatura</span>
-          <div class="chevron"></div>
-        </div>
-        <div class="card-expandable">
-          <hr />
-          <input type="number" class="premium-input" placeholder="0°C" />
-          <div class="d-flex gap-2 mt-2">
-            <select class="premium-select w-100">
-              <option>Celsius</option>
-            </select>
-            <select class="premium-select w-100">
-              <option>Fahrenheit</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="premium-card card-glow-blue" onclick="toggleCard(this)">
-        <div class="card-main">
-          <div class="icon-circle bg-blue">📏</div>
-          <span class="card-title">Comprimento</span>
-          <div class="chevron"></div>
-        </div>
-        <div class="card-expandable">
-          <hr />
-          <input
-            type="number"
-            class="premium-input"
-            placeholder="0.00"
-            inputmode="decimal"
-          />
-          <div class="d-flex gap-2 mt-2">
-            <select class="premium-select w-100">
-              <option>Metros</option>
-              <option>Kilômetros</option>
-              <option>Milhas</option>
-            </select>
-            <select class="premium-select w-100">
-              <option>Centímetros</option>
-              <option>Metros</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="premium-card card-glow-purple" onclick="toggleCard(this)">
-        <div class="card-main">
-          <div class="icon-circle bg-purple">⚖️</div>
-          <span class="card-title">Massa / Peso</span>
-          <div class="chevron"></div>
-        </div>
-        <div class="card-expandable">
-          <hr />
-          <input
-            type="number"
-            class="premium-input"
-            placeholder="0.00"
-            inputmode="decimal"
-          />
-          <div class="d-flex gap-2 mt-2">
-            <select class="premium-select w-100">
-              <option>Kilogramas</option>
-              <option>Gramas</option>
-              <option>Libras</option>
-            </select>
-            <select class="premium-select w-100">
-              <option>Gramas</option>
-              <option>Kilogramas</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="premium-card card-glow-pink" onclick="toggleCard(this)">
-        <div class="card-main">
-          <div class="icon-circle bg-pink">⏱️</div>
-          <span class="card-title">Tempo</span>
-          <div class="chevron"></div>
-        </div>
-        <div class="card-expandable">
-          <hr />
-          <input
-            type="number"
-            class="premium-input"
-            placeholder="0.00"
-            inputmode="decimal"
-          />
-          <div class="d-flex gap-2 mt-2">
-            <select class="premium-select w-100">
-              <option>Horas</option>
-              <option>Minutos</option>
-              <option>Segundos</option>
-            </select>
-            <select class="premium-select w-100">
-              <option>Minutos</option>
-              <option>Segundos</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="premium-card card-glow-cyan" onclick="toggleCard(this)">
-        <div class="card-main">
-          <div class="icon-circle bg-cyan">🚀</div>
-          <span class="card-title">Velocidade</span>
-          <div class="chevron"></div>
-        </div>
-        <div class="card-expandable">
-          <hr />
-          <input
-            type="number"
-            class="premium-input"
-            placeholder="0.00"
-            inputmode="decimal"
-          />
-          <div class="d-flex gap-2 mt-2">
-            <select class="premium-select w-100">
-              <option>Km/h</option>
-              <option>Mph</option>
-              <option>Nós</option>
-            </select>
-            <select class="premium-select w-100">
-              <option>M/s</option>
-              <option>Km/h</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="premium-card card-glow-indigo" onclick="toggleCard(this)">
-        <div class="card-main">
-          <div class="icon-circle bg-indigo">📐</div>
-          <span class="card-title">Área</span>
-          <div class="chevron"></div>
-        </div>
-        <div class="card-expandable">
-          <hr />
-          <input
-            type="number"
-            class="premium-input"
-            placeholder="0.00"
-            inputmode="decimal"
-          />
-          <div class="d-flex gap-2 mt-2">
-            <select class="premium-select w-100">
-              <option>Metros²</option>
-              <option>Hectares</option>
-              <option>Alqueires</option>
-            </select>
-            <select class="premium-select w-100">
-              <option>Kilômetros²</option>
-              <option>Metros²</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
@@ -350,35 +137,65 @@
 
                     <input
                       type="number"
-                      id="moeda_valor"
+                      id="currency-amount"
                       class="form-control mb-3"
                       placeholder="0.00"
                     />
                     <div class="row g-2 mb-3">
                       <div class="col">
-                        <select id="moeda_origem" class="form-select">
-                          <option value="BRL">BRL</option>
-                          [cite: 8]
-                          <option value="USD">USD</option>
-                          [cite: 9]
-                          <option value="EUR">EUR</option>
-                          [cite: 10]
+                        <select id="currency-from" class="form-select">
+                          <option value="BRL">BRL - Real Brasileiro</option>
+                          <option value="USD">USD - Dólar Americano</option>
+                          <option value="EUR">EUR - Euro</option>
+                          <option value="GBP">GBP - Libra Esterlina</option>
+                          <option value="JPY">JPY - Iene Japonês</option>
+                          <option value="CAD">CAD - Dólar Canadense</option>
+                          <option value="AUD">AUD - Dólar Australiano</option>
+                          <option value="CHF">CHF - Franco Suíço</option>
+                          <option value="CNY">CNY - Yuan Chinês</option>
+                          <option value="ARS">ARS - Peso Argentino</option>
+                          <option value="MXN">MXN - Peso Mexicano</option>
+                          <option value="CLP">CLP - Peso Chileno</option>
+                          <option value="COP">COP - Peso Colombiano</option>
+                          <option value="PEN">PEN - Sol Peruano</option>
+                          <option value="UYU">UYU - Peso Uruguaio</option>
+                          <option value="KRW">KRW - Won Sul-Coreano</option>
+                          <option value="INR">INR - Rupia Indiana</option>
+                          <option value="ZAR">ZAR - Rand Sul-Africano</option>
+                          <option value="TRY">TRY - Lira Turca</option>
+                          <option value="SEK">SEK - Coroa Sueca</option>
                         </select>
                       </div>
                       <div class="col-auto">→</div>
                       <div class="col">
-                        <select id="moeda_destino" class="form-select">
-                          <option value="USD">USD</option>
-                          [cite: 9]
-                          <option value="BRL">BRL</option>
-                          [cite: 8]
+                        <select id="currency-to" class="form-select">
+                          <option value="USD">USD - Dólar Americano</option>
+                          <option value="BRL">BRL - Real Brasileiro</option>
+                          <option value="EUR">EUR - Euro</option>
+                          <option value="GBP">GBP - Libra Esterlina</option>
+                          <option value="JPY">JPY - Iene Japonês</option>
+                          <option value="CAD">CAD - Dólar Canadense</option>
+                          <option value="AUD">AUD - Dólar Australiano</option>
+                          <option value="CHF">CHF - Franco Suíço</option>
+                          <option value="CNY">CNY - Yuan Chinês</option>
+                          <option value="ARS">ARS - Peso Argentino</option>
+                          <option value="MXN">MXN - Peso Mexicano</option>
+                          <option value="CLP">CLP - Peso Chileno</option>
+                          <option value="COP">COP - Peso Colombiano</option>
+                          <option value="PEN">PEN - Sol Peruano</option>
+                          <option value="UYU">UYU - Peso Uruguaio</option>
+                          <option value="KRW">KRW - Won Sul-Coreano</option>
+                          <option value="INR">INR - Rupia Indiana</option>
+                          <option value="ZAR">ZAR - Rand Sul-Africano</option>
+                          <option value="TRY">TRY - Lira Turca</option>
+                          <option value="SEK">SEK - Coroa Sueca</option>
                         </select>
                       </div>
                     </div>
                     <div
                       class="result-box mt-2 p-3 bg-light rounded text-center"
                     >
-                      <span id="resultado_moeda" class="fw-bold">--</span>
+                      <span id="currency-result" class="fw-bold">--</span>
                     </div>
                   </div>
                 </div>
