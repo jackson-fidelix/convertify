@@ -1,0 +1,336 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS
+   ========================================================================== */
+:root {
+    --bg-body: #f8f9fc;
+    --sidebar-dark: #1a1d21;
+    --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: #334155;
+    transition: all 0.5s ease;
+}
+
+span{
+    color: white;
+}
+
+/* ==========================================================================
+   SIDEBAR (Ajuste Profissional)
+   ========================================================================== */
+.sidebar {
+    height: 100vh;
+    background-color: var(--sidebar-dark);
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar .nav-link {
+    color: #94a3b8;
+    padding: 12px 20px;
+    margin: 5px 15px;
+    border-radius: 10px;
+    transition: var(--transition-fast);
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color: #0d6efd;
+    color: white;
+    transform: translateX(5px);
+}
+
+/* ==========================================================================
+   CARDS PADRONIZADOS (Efeito Mouse e Cores)
+   ========================================================================== */
+.converter-card {
+    border: none;
+    border-radius: 20px;
+    background: #ffffff;
+    padding: 10px;
+    /* Efeito de profundidade inicial */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-fast);
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+/* O "Pulo do Gato": Efeito quando passa o mouse */
+.converter-card:hover {
+    transform: translateY(-10px); /* O card sobe */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Cores por Categoria (Borda lateral grossa para um visual moderno) */
+.card-moeda { border-left: 6px solid #10b981; }      /* Verde */
+.card-temp { border-left: 6px solid #f59e0b; }       /* Laranja */
+.card-comp { border-left: 6px solid #3b82f6; }       /* Azul */
+.card-massa { border-left: 6px solid #6366f1; }      /* Roxo */
+.card-tempo { border-left: 6px solid #ec4899; }      /* Rosa */
+
+/* Efeito de brilho na cor do card ao passar o mouse */
+.card-moeda:hover { border-left-color: #059669; background: #f0fff4; }
+.card-temp:hover { border-left-color: #d97706; background: #fffaf0; }
+.card-comp:hover { border-left-color: #2563eb; background: #eff6ff; }
+.card-massa:hover { border-left-color: #4f46e5; background: #eef2ff; }
+.card-tempo:hover { border-left-color: #db2777; background: #fdf2f8; }
+
+/* Icon Boxes */
+.icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    background: #f1f5f9;
+}
+
+/* ==========================================================================
+   RESULTADO E INPUTS
+   ========================================================================== */
+.result-box {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+}
+
+.result-box span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b !important;
+}
+
+.custom-input, .custom-select {
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px;
+    transition: var(--transition-fast);
+}
+
+.custom-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+/* ==========================================================================
+   MODO ESCURO REFINADO (BLACK & GREY)
+   ========================================================================== */
+body.dark-theme {
+    background-color: #000000; /* Fundo totalmente preto */
+    color: #ffffff;            /* Texto principal branco */
+}
+
+/* Main Content no Dark Mode */
+body.dark-theme .main-content {
+    background-color: #000000;
+}
+
+/* Cards no Dark Mode */
+body.dark-theme .converter-card {
+    background-color: #121212; /* Cinza bem escuro para o card */
+    border: 1px solid #2d2d2d; /* Borda cinza sutil */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Inputs e Selects no Dark Mode */
+body.dark-theme .custom-input, 
+body.dark-theme .custom-select {
+    background-color: #1e1e1e; /* Cinza médio para campos */
+    border-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-theme .custom-input::placeholder {
+    color: #666666;
+}
+
+/* Caixa de Resultado no Dark Mode */
+body.dark-theme .result-box {
+    background-color: #1e1e1e; /* Fundo cinza para destaque */
+    border: 1px solid #333333;
+}
+
+body.dark-theme .result-box span {
+    color: #ffffff !important; /* Resultado sempre em branco */
+}
+
+/* Texto Muted (Subtítulos) no Dark Mode */
+body.dark-theme .text-muted {
+    color: #a0a0a0 !important;
+}
+
+/* Sidebar no Dark Mode (Mantendo o padrão dark mas com bordas cinzas) */
+body.dark-theme .sidebar {
+    background-color: #0a0a0a;
+    border-right: 1px solid #2d2d2d;
+}
+
+body.dark-theme .custom-input, 
+body.dark-theme .custom-select {
+    background: rgba(255, 255, 255, 0.05) !important; /* Transparência leve */
+    backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.05);
+}
+
+body.dark-theme .custom-input:focus {
+    border-color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* DESIGN SYSTEM SÊNIOR */
+:root {
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --accent: #3b82f6; /* Azul Moderno */
+    --surface: #0a0a0a;
+}
+
+@media (max-width: 768px) {
+    /* Esconde o lixo do layout desktop */
+    .container-fluid > .row { display: none !important; }
+
+    body { 
+        background-color: #1a1d23 !important; 
+        margin: 0; padding: 0;
+    }
+
+    .app-container {
+        display: block !important;
+        position: relative; /* Mudamos de fixed para relative para facilitar o debug */
+        min-height: 100vh;
+        width: 100%;
+        background: #1a1d23;
+        padding: 20px 10px;
+    }
+
+    .app-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .app-logo { color: white; font-size: 1.8rem; font-weight: 800; margin: 0; }
+
+    .premium-card {
+        background: #ffffff !important;
+        margin-bottom: 16px;
+        border-radius: 25px;
+        padding: 20px;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Cores dos Círculos */
+    .icon-circle { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; }
+    .bg-green { background: #10b981; color: white; }
+    .bg-orange { background: #f59e0b; color: white; }
+
+    /* Controla a expansão */
+    .card-expandable {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+
+    .premium-card.open .card-expandable {
+        max-height: 250px;
+        opacity: 1;
+        margin-top: 15px;
+    }
+
+    .card-main { display: flex; align-items: center; }
+    .card-title { color: #1e293b; font-weight: 700; flex-grow: 1; }
+
+    /* Estilo dos Inputs Premium */
+    .premium-input {
+        width: 100%;
+        border: none;
+        background: #f1f5f9;
+        padding: 15px;
+        border-radius: 15px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1e293b;
+    }
+}
+
+/* Cores de Fundo dos Novos Ícones */
+.bg-blue { background: #3b82f6; color: white; }
+.bg-purple { background: #a855f7; color: white; }
+.bg-pink { background: #ec4899; color: white; }
+.bg-cyan { background: #06b6d4; color: white; }
+.bg-indigo { background: #6366f1; color: white; }
+
+/* Efeitos de Glow Laterais */
+.card-glow-blue { border-left: 5px solid #3b82f6; box-shadow: -10px 0 20px -10px rgba(59, 130, 246, 0.4); }
+.card-glow-purple { border-left: 5px solid #a855f7; box-shadow: -10px 0 20px -10px rgba(168, 85, 247, 0.4); }
+.card-glow-pink { border-left: 5px solid #ec4899; box-shadow: -10px 0 20px -10px rgba(236, 72, 153, 0.4); }
+.card-glow-cyan { border-left: 5px solid #06b6d4; box-shadow: -10px 0 20px -10px rgba(6, 182, 212, 0.4); }
+.card-glow-indigo { border-left: 5px solid #6366f1; box-shadow: -10px 0 20px -10px rgba(99, 102, 241, 0.4); }
+
+
+.tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 20px; /* Espaço para a barra do iPhone */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    z-index: 10000;
+}
+
+/* Ajuste para Dark Mode */
+body.dark-theme .tab-bar {
+    background: rgba(26, 29, 35, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tab-item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #8e8e93;
+    transition: 0.3s;
+}
+
+.tab-item.active {
+    color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.tab-icon {
+    font-size: 1.4rem;
+}
+
+.tab-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Espaçamento extra no final da lista para a Tab Bar não cobrir o último card */
+.app-container {
+    padding-bottom: 120px !important;
+}
