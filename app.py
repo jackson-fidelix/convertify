@@ -1,6 +1,9 @@
 from flask import Flask, render_template
+from routes.currency import currency_bp
 
 app = Flask(__name__)
+
+app.register_blueprint(currency_bp)
 
 @app.route("/")
 def home():
@@ -8,3 +11,4 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
