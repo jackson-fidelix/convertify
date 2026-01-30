@@ -262,4 +262,57 @@ document.addEventListener("DOMContentLoaded", ()=> {
     toSelect.addEventListener("change", convertLength);
 });
 
+// conversor de tempo
+document.addEventListener("DOMContentLoaded", () => {
+  const valueTime = document.getElementById("time-value");
+  const fromTime = document.getElementById("time-from");
+  const toTime = document.getElementById("time-to");
+  const resultTime = document.getElementById("time-result");
+
+  if (!valueTime || !fromTime || !toTime || !resultTime) {
+    console.error("[TEMPO] Elementos não encontrados!");
+    return;
+  }
+
+  async function convertTime() {
+    const value = parseFloat(valueTime.value);
+
+    if (isNaN(value) || value <= 0) {
+      resultTime.innerText = "---"
+      return;
+    }
+
+    try {
+      const response = await fetch("time/convert", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          value: value,
+          from: fromTime.value,
+          to: toTime.value
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro na conversão");
+      }
+
+      const data = await response.json();
+
+      const formatted = Number(data.result).toLocaleString("pt-BR", {
+        maximumFractionDigits: 6
+      });
+
+      resultTime.innerText = `${formatted} ${toTime.value}`;
+
+    } catch (error) {
+      console.error("[TEMPO] Erro:", error);
+      resultTime.innerText = "Alguém tropeçou nos cabos :(";
+    }
+  }
+
+  valueTime.addEventListener("input", convertTime);
+  fromTime.addEventListener("change", convertTime);
+  toTime.addEventListener("change", convertTime);
+})
 

@@ -304,32 +304,35 @@
                     </div>
                     <input
                       type="number"
-                      id="tempo_valor"
+                      id="time-value"
                       class="form-control mb-3"
                       placeholder="0"
                     />
                     <div class="row g-2 mb-3">
                       <div class="col">
-                        <select id="tempo_origem" class="form-select">
-                          <option value="s">Segundos</option>
-                          <option value="min">Minutos</option>
-                          <option value="h" selected>Horas</option>
-                          <option value="d">Dias</option>
+                        <select id="time-from" class="form-select">
+                          <option value="ms">Milissegundo</option>
+                          <option value="s">Segundo</option>
+                          <option value="min">Minuto</option>
+                          <option value="h">Hora</option>
+                          <option value="d">Dia</option>
                         </select>
                       </div>
                       <div class="col-auto">→</div>
                       <div class="col">
-                        <select id="tempo_destino" class="form-select">
-                          <option value="min">Minutos</option>
-                          <option value="s">Segundos</option>
-                          <option value="h">Horas</option>
+                        <select id="time-to" class="form-select">
+                          <option value="ms">Milissegundo</option>
+                          <option value="s">Segundo</option>
+                          <option value="min">Minuto</option>
+                          <option value="h">Hora</option>
+                          <option value="d">Dia</option>
                         </select>
                       </div>
                     </div>
                     <div
                       class="result-box mt-2 p-3 bg-light rounded text-center"
                     >
-                      <span id="resultado_tempo" class="fw-bold">--</span>
+                      <span id="time-result" class="fw-bold">--</span>
                     </div>
                   </div>
                 </div>
