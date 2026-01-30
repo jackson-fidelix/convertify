@@ -1,13 +1,14 @@
-from flask import Flask, jsonify
+from flask import Flask, render_template
+from routes.currency import currency_bp
 
 app = Flask(__name__)
 
-@app.route('/')
+app.register_blueprint(currency_bp)
+
+@app.route("/")
 def home():
-   return jsonify({
-      "status": "ok",
-      "message": "Convertify API is running..."
-   })
+    return render_template("index.html")
 
 if __name__ == "__main__":
-   app.run(debug=True)
+    app.run(debug=True)
+    
