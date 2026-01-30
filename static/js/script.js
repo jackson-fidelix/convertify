@@ -140,8 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    console.log("[TESTE] Script passou ANTES da função convertCurrency");
-
     async function convertCurrency() {
         console.log("[TESTE] convertCurrency ENTROU");        
 
@@ -154,8 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
             resultSpan.innerText = "--";
             return;
         }
-
-        console.log(`[Moedas] Convertendo ${value} de ${fromSelect.value} para ${toSelect.value}`);
 
         try {
             console.log("[DEBUG] Enviando fetch para /api/currency/convert");
@@ -178,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const data = await response.json();
-            console.log("[Moedas] Resposta da API:", data);
 
             resultSpan.innerText = `${data.result.toFixed(2)} ${toSelect.value}`;
             console.log("[DEBUG] Resultado atualizado na tela:", resultSpan.innerText);
@@ -200,11 +195,71 @@ document.addEventListener("DOMContentLoaded", () => {
             e.target.id === "currency-from" ||
             e.target.id === "currency-to"
         ) {
-        console.log("[DEBUG] select detectado via delegation");
         convertCurrency();
         }
     });
 });
 
+// conversor de medidas
+document.addEventListener("DOMContentLoaded", ()=> {
+    const valueInput = document.getElementById("length-value");
+    const fromSelect = document.getElementById("length-from");
+    const toSelect   = document.getElementById("length-to");
+    const resultSpan = document.getElementById("length-result");
+    
+    if (!valueInput || !fromSelect || !toSelect || !resultSpan) {
+      console.error("[Comprimento] Elementos não encontrados")
+      return;
+    }
+
+    const LENGTH_DECIMALS = {
+      mm: 2,
+      cm: 2,
+      dm: 3,
+      m: 4,
+      dam: 5,
+      hm: 6,
+      km: 6
+  };
+
+    async function convertLength() {
+      const value = parseFloat(valueInput.value);
+      
+      if (isNaN(value) || value <= 0) {
+        resultSpan.innerText = "---";
+        return;
+      }
+
+      try {
+        const response = await fetch("/length/convert", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                value: value,
+                from: fromSelect.value,
+                to: toSelect.value
+            })
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro na conversão");
+        }
+
+        const data = await response.json();
+        const decimals = LENGTH_DECIMALS[toSelect.value] ?? 4;
+        const formatted = Number(data.result.toFixed(decimals)).toString();
+
+        resultSpan.innerText = `${formatted} ${toSelect.value}`;
+
+      } catch (error) {
+          console.error("[Comprimento] Erro:", error);
+          resultSpan.innerText = "Erro";
+      }
+    }
+
+    valueInput.addEventListener("input", convertLength);
+    fromSelect.addEventListener("change", convertLength);
+    toSelect.addEventListener("change", convertLength);
+});
 
 
