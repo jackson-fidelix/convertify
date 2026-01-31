@@ -316,3 +316,52 @@ document.addEventListener("DOMContentLoaded", () => {
   toTime.addEventListener("change", convertTime);
 })
 
+document.addEventListener("DOMContentLoaded", () => {
+  const valueMass = document.getElementById("mass-value");
+  const fromMass = document.getElementById("mass-from");
+  const toMass = document.getElementById("mass-to");
+  const resultMass = document.getElementById("mass-result");
+
+  const DECIMALS = 4;
+
+  async function convertMass() {
+        const value = parseFloat(valueMass.value);
+
+        if (isNaN(value)) {
+            resultMass.innerText = "---";
+            return;
+        }
+
+        try {
+            const response = await fetch("/mass/convert", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    value: value,
+                    from: fromMass.value,
+                    to: toMass.value
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro na conversão");
+            }
+
+            const data = await response.json();
+
+            const formatted = parseFloat(
+                data.result.toFixed(DECIMALS)
+            );
+
+            resultMass.innerText = `${formatted} ${toMass.value}`;
+            
+        } catch (error) {
+            console.error("[Massa] Erro:", error);
+            resultMass.innerText = "Alguém tropeçou nos cabos :(";
+        }
+    }
+
+    valueMass.addEventListener("input", convertMass);
+    fromMass.addEventListener("change", convertMass);
+    toMass.addEventListener("change", convertMass);
+});

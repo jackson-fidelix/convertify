@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from services.time import convert_time
 
-
 time_bp = Blueprint("time", __name__)
 
 @time_bp.route('/time/convert', methods=["POST"])
