@@ -130,11 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const toSelect    = document.getElementById("currency-to");
     const resultSpan  = document.getElementById("currency-result");
 
-    console.log("[DEBUG] amountInput encontrado?", !!amountInput);
-    console.log("[DEBUG] fromSelect encontrado?", !!fromSelect);
-    console.log("[DEBUG] toSelect encontrado?", !!toSelect);
-    console.log("[DEBUG] resultSpan encontrado?", !!resultSpan);
-
     if (!amountInput || !fromSelect || !toSelect || !resultSpan) {
         console.error("[Moedas] ERRO: Um ou mais elementos não encontrados");
         return;
@@ -316,6 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
   toTime.addEventListener("change", convertTime);
 })
 
+// conversor de massa
 document.addEventListener("DOMContentLoaded", () => {
   const valueMass = document.getElementById("mass-value");
   const fromMass = document.getElementById("mass-from");
@@ -364,4 +360,54 @@ document.addEventListener("DOMContentLoaded", () => {
     valueMass.addEventListener("input", convertMass);
     fromMass.addEventListener("change", convertMass);
     toMass.addEventListener("change", convertMass);
+});
+
+// conversor de velocidade
+document.addEventListener("DOMContentLoaded", () => {
+    const valueVel = document.getElementById("vel-value");
+    const fromVel = document.getElementById("vel-from");
+    const toVel   = document.getElementById("vel-to");
+    const resultVel = document.getElementById("vel-result");
+
+    console.log("[DEBUG] valueVel encontrado?", !!valueVel);
+    console.log("[DEBUG] fromVel encontrado?", !!fromVel);
+    console.log("[DEBUG] toVel encontrado?", !!toVel);
+    console.log("[DEBUG] resultSpan encontrado?", !!resultVel);
+
+    if (!valueVel || !fromVel || !toVel || !resultVel) return;
+
+
+    async function convertVelocity() {
+        const value = parseFloat(valueVel.value);
+
+        if (isNaN(value) || value <= 0) {
+            resultVel.innerText = "--";
+            return;
+        }
+
+        try {
+            const response = await fetch("/velocity/convert", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    value: value,
+                    from: fromVel.value,
+                    to: toVel.value
+                })
+            });
+
+            if (!response.ok) throw new Error("Erro na conversão");
+
+            const data = await response.json();
+
+            resultVel.innerText = `${data.result} ${toVel.value}`;
+        } catch (err) {
+            console.error("[Velocidade] Erro:", err);
+            resultVel.innerText = "Erro";
+        }
+    }
+
+    valueVel.addEventListener("input", convertVelocity);
+    fromVel.addEventListener("change", convertVelocity);
+    toVel.addEventListener("change", convertVelocity);
 });
