@@ -1,464 +1,866 @@
 /* ==========================================================================
-   CONFIGURAÇÕES GERAIS
+   DESIGN SYSTEM & VARIÁVEIS TOTAIS
    ========================================================================== */
 :root {
+  /* Cores */
   --bg-body: #f8f9fc;
   --sidebar-dark: #1a1d21;
+  --accent: #3b82f6;
   --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+  
+  /* Cores por Categoria*/
+  --color-moeda: #10b981;
+  --color-temp: #f59e0b;
+  --color-comp: #3b82f6;
+  --color-massa: #6366f1;
+  --color-tempo: #ec4899;
 
+  /* Espaçamento Fluido (Clamp) */
+  --space-sm: clamp(10px, 1.5vw, 20px);
+  --space-md: clamp(15px, 2.5vw, 35px);
+  --space-lg: clamp(20px, 4vw, 50px);
+  
+  /* Tipografia Fluida */
+  --fs-base: clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
+  --fs-h1: clamp(1.5rem, 5vw, 2.5rem);
+  --fs-card-title: clamp(1.1rem, 2vw, 1.4rem);
+
+
+  /* Cores Profissionais - Paleta Slate/Blue */
+  --card-bg: #ffffff;
+  --bg-app: #f8fafc;
+  --text-title: #1e293b;
+  --text-body: #475569;
+ 
+  
+  /* Sombras "Soft" (O segredo do design moderno) */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
+  --shadow-hover: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 1.25rem;
+}
+* { box-sizing: border-box; }
+
+/* ==========================================================================
+   RESET & ESTRUTURA BASE
+   ========================================================================== */
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--bg-body);
-  color: #334155;
+  color: #1e293b;
+  font-size: var(--fs-base);
   transition: all 0.5s ease;
+  margin: 0;
 }
 
-span {
-  color: white;
+h1.h3 { font-size: var(--fs-h1) !important; font-weight: 800; color: #1e293b; }
+.h4.fw-bold { font-size: var(--fs-card-title); }
+
+/* Grid de Layout Principal */
+.container-fluid > .row {
+  display: flex;
+  flex-wrap: nowrap; /* Impede quebra brusca no desktop */
+  min-height: 100vh;
 }
 
-/* ==========================================================================
-   SIDEBAR (Ajuste Profissional)
-   ========================================================================== */
-.sidebar {
-  height: 100vh;
-  background-color: var(--sidebar-dark);
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+.main-content {
+  flex: 1;
+  padding: var(--space-md) !important;
+  width: 100%;
 }
 
-.sidebar .nav-link {
-  color: #94a3b8;
-  padding: 12px 20px;
-  margin: 5px 15px;
-  border-radius: 10px;
-  transition: var(--transition-fast);
-}
-
-.sidebar .nav-link:hover,
-.sidebar .nav-link.active {
-  background-color: #0d6efd;
-  color: white;
-  transform: translateX(5px);
-}
 
 /* ==========================================================================
-   CARDS PADRONIZADOS (Efeito Mouse e Cores)
+   CARDS CONVERSORES (O Pulo do Gato)
    ========================================================================== */
 .converter-card {
-  border: none;
-  border-radius: 20px;
-  background: #ffffff;
-  padding: 10px;
-  /* Efeito de profundidade inicial */
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  transition: var(--transition-fast);
-  animation: fadeInUp 0.6s ease-out backwards;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
 }
 
-/* O "Pulo do Gato": Efeito quando passa o mouse */
 .converter-card:hover {
-  transform: translateY(-10px); /* O card sobe */
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
 }
 
-/* Cores por Categoria (Borda lateral grossa para um visual moderno) */
-.card-moeda {
-  border-left: 6px solid #10b981;
-} /* Verde */
-.card-temp {
-  border-left: 6px solid #f59e0b;
-} /* Laranja */
-.card-comp {
-  border-left: 6px solid #3b82f6;
-} /* Azul */
-.card-massa {
-  border-left: 6px solid #6366f1;
-} /* Roxo */
-.card-tempo {
-  border-left: 6px solid #ec4899;
-} /* Rosa */
 
-/* Efeito de brilho na cor do card ao passar o mouse */
-.card-moeda:hover {
-  border-left-color: #059669;
-  background: #f0fff4;
-}
-.card-temp:hover {
-  border-left-color: #d97706;
-  background: #fffaf0;
-}
-.card-comp:hover {
-  border-left-color: #2563eb;
-  background: #eff6ff;
-}
-.card-massa:hover {
-  border-left-color: #4f46e5;
-  background: #eef2ff;
-}
-.card-tempo:hover {
-  border-left-color: #db2777;
-  background: #fdf2f8;
-}
-
-/* Icon Boxes */
-.icon-box {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
+/* ==========================================================================
+   EDIÇÃO E AJUSTES DOS ICONES
+   ========================================================================== */
+.icon-box-large {
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  background: #f1f5f9;
+  border-radius: 1rem;
+  transition: var(--transition);
+  filter: grayscale(0.2);
+}
+.converter-card:hover .icon-box-large {
+  filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+/* Ajuste do ícone para não sumir na centralização */
+.icon-width {
+    width: 32px;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+/* Ajuste do ícone para não sumir na centralização */
+.icon-width {
+    width: 32px;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+
+/* ==========================================================================
+   FORMULÁRIOS INTERNOS (Quando o card foca)
+   ========================================================================== */
+.form-control, .form-select {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  background-color: #fdfdfd;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  background-color: #fff;
 }
 
 /* ==========================================================================
-   RESULTADO E INPUTS
+   CAIXA DE RESULTADO
    ========================================================================== */
 .result-box {
-  margin-top: 15px;
-  padding: 15px;
-  background: #f8fafc;
-  border-radius: 12px;
-  text-align: center;
-  border: 1px solid #e2e8f0;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 2px dashed #38bdf8;
+     border-radius: 1rem;
+     min-height: 55px;
+    display: flex;
+    align-items: center;
+     justify-content: center;
+    transition: var(--transition);
 }
 
 .result-box span {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b !important;
+  font-size: 1.75rem;
+  letter-spacing: -0.025em;
+  color: var(--text-title);
 }
 
-.custom-input,
-.custom-select {
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 10px;
-  transition: var(--transition-fast);
+
+/* ==========================================================================
+AJUSTE DE TEXTOS BRANCOS (MODO DARK)
+========================================================================== */
+
+/* Efeito Hover - Modo Claro */
+
+body:not(.dark-theme) .converter-card:hover {
+    border-color: #3b82f6 !important; /* Azul Accent */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3) !important; /* Brilho suave azul */
+    transform: translateY(-5px); /* Leve elevação para destacar o brilho */
 }
 
-.custom-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  outline: none;
+/* Força o título a ficar branco quando o body tiver a classe dark-theme */
+body.dark-theme h1.h3, 
+body.dark-theme .h3 {
+    color: #ffffff !important;
+}
+
+body.dark-theme h1, 
+body.dark-theme h2, 
+body.dark-theme h3, 
+body.dark-theme h4 {
+    color: #f8fafc !important;
+}
+
+body:not(.dark-theme) .nav-link {
+    position: relative;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+}
+
+body:not(.dark-theme) .nav-link:hover {
+    color: #020617 !important; /* Azul do seu accent */
+    background: rgba(59, 130, 246, 0.08); /* Fundo azul translúcido */
+    border-radius: 8px;
+    transform: translateY(-2px); /* Leve subida */
+}
+
+/* Linha decorativa que cresce embaixo no Modo Claro */
+body:not(.dark-theme) .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #020617;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+body:not(.dark-theme) .nav-link:hover::after {
+    width: 60%;
+}
+
+/* Forçar o Convertify a ser branco no modo dark, mesmo com a classe text-white */
+body.dark-theme #main-nav .navbar-brand.text-white {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important; /* Garante em navegadores mobile */
+}
+
+/* Garante que o texto não "suma" se houver algum reset de modo claro */
+body.dark-theme .navbar-brand {
+    color: #ffffff !important;
+}
+
+body.dark-theme .navbar-brand,
+body.dark-theme h1, 
+body.dark-theme h2, 
+body.dark-theme h5,
+body.dark-theme .h3,
+body.dark-theme .h4 {
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+body.dark-theme .text-muted, 
+body.dark-theme p, 
+body.dark-theme .small,
+body.dark-theme .card-body span {
+    color: #ffffff !important;
+    opacity: 1 !important; /* Força o brilho total do branco */
+}
+
+/* Ajuste para o texto dentro dos selects (unidades de medida) */
+body.dark-theme .form-select,
+body.dark-theme .form-control {
+    color: #ffffff !important;
+}
+
+/* Subtítulos e Textos Auxiliares (Clique para converter, Metros, Km, etc) */
+body.dark-theme p, 
+body.dark-theme .text-muted, 
+body.dark-theme .small,
+body.dark-theme span:not(.badge) {
+    color: #ffffff !important;
+    opacity: 1 !important; /* Remove a transparência do text-muted */
+}
+
+/* Ajuste específico para os labels de dentro do card focado */
+body.dark-theme .card-focado .text-muted,
+body.dark-theme .card-focado p {
+    color: #f8fafc !important;
+}
+
+
+/* ==========================================================================
+   FIX: MENU CONVERTIFY (OFFCANVAS) WHITE TEXT
+   ========================================================================== */
+
+/* Força o título do menu lateral a ser branco puro no modo dark */
+body.dark-theme .offcanvas-title {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Opcional: Melhora o brilho do título no menu lateral */
+body.dark-theme .offcanvas-header .offcanvas-title {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Garante que o separador (borda inferior) combine com o seu azul marinho */
+body.dark-theme .offcanvas-header {
+    border-bottom-color: #334155 !important;
+}
+
+   
+/* 1. Configuração de Cores e Fundo Base */
+body.dark-theme {
+    background-color: #020617 !important; /* Azul Marinho Profundo */
+    color: #f8fafc;
+}
+
+/* Garante que o texto dentro dos Selects e Inputs também seja legível */
+body.dark-theme .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 2. Unificação de Cor: Externo e Interno do Card Focado */
+body.dark-theme .card-focado, 
+body.dark-theme .card-focado .card-body {
+    background-color: #0f172a !important; /* Mesma cor interna e externa */
+    border: 1px solid #334155 !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 3. Cards da Grade (Não focados) */
+body.dark-theme .converter-card {
+    background-color: #1e293b !important; /* Um tom acima do fundo para contraste */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+body.dark-theme .converter-card:hover {
+    border-color: #38bdf8 !important; /* Azul Ciano Neon */
+    /* O "Glow" azul brilhante abaixo */
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 
+                inset 0 0 10px rgba(56, 189, 248, 0.1) !important;
+    transform: translateY(-5px);
+}
+
+/* 4. Inputs, Selects e Telinhas */
+body.dark-theme .form-control, 
+body.dark-theme .form-select,
+body.dark-theme .card-focado .form-control,
+body.dark-theme .card-focado .form-select {
+    background-color: #020617 !important; /* Fundo mais escuro para os campos */
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Seta do Select no Dark Mode */
+body.dark-theme .form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f1f5f9' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+    background-position: right 0.75rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 16px 12px !important;
+}
+
+/* 5. Caixa de Resultado (Glow sutil) */
+body.dark-theme .result-box,
+body.dark-theme .card-focado .result-box {
+    background-color: #020617 !important;
+    border: 1px dashed #38bdf8 !important;
+    color: #38bdf8;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* 6. Navegação e Menu (Navbar e Offcanvas) */
+body.dark-theme #main-nav,
+body.dark-theme .offcanvas {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b;
+    color: #f8fafc !important;
+}
+
+body.dark-theme .nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+}
+
+body.dark-theme .nav-link:hover {
+    color: #38bdf8 !important; /* Azul ciano brilhante */
+    background: rgba(255, 255, 255, 0.05); /* Brilho de vidro */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2); /* Glow sutil */
+}
+
+
+/* Linha Neon no Modo Escuro */
+body.dark-theme .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+body.dark-theme .nav-link:hover::after {
+    width: 70%;
+}
+
+/* 7. Ícone Hambúrguer e Botão Fechar */
+body.dark-theme .navbar-toggler-icon {
+   /* Injeta o SVG do hambúrguer com stroke branco */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    filter: none !important; /* Remove qualquer filtro anterior */
+}
+
+/* 8. Brilhos dos Ícones (Glows específicos mantidos) */
+body.dark-theme .card-moeda .icon-box-large { background-color: rgba(34, 197, 94, 0.15) !important; box-shadow: 0 0 25px rgba(34, 197, 94, 0.2); }
+body.dark-theme .card-comp .icon-box-large { background-color: rgba(56, 189, 248, 0.15) !important; box-shadow: 0 0 25px rgba(56, 189, 248, 0.2); }
+body.dark-theme .card-tempo .icon-box-large { background-color: rgba(251, 191, 36, 0.15) !important; box-shadow: 0 0 25px rgba(251, 191, 36, 0.2); }
+body.dark-theme .card-massa .icon-box-large { background-color: rgba(168, 85, 247, 0.15) !important; box-shadow: 0 0 25px rgba(168, 85, 247, 0.2); }
+
+/* 9. Container do Switch (Sem bordas) */
+.dark-mode-container, 
+body.dark-theme .dark-mode-container {
+    border-top: none !important;
+    padding-top: 1rem;
 }
 
 /* ==========================================================================
-   MODO ESCURO REFINADO (BLACK & GREY)
+   INTERFACE DE FOCO & MOBILE SIMULATION
    ========================================================================== */
-body.dark-theme {
-  background-color: #000000; /* Fundo totalmente preto */
-  color: #ffffff; /* Texto principal branco */
+#overlay-fundo {
+    display: none;
+    position: fixed;
+    inset: 0;
+  background: rgba(15, 23, 42, 0.75); /* Mais transparente para ver o fundo levemente */
+    backdrop-filter: blur(8px); /* Desfoque mais elegante */
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  
 }
 
-/* Main Content no Dark Mode */
-body.dark-theme .main-content {
-  background-color: #000000;
+body.modal-open {
+    overflow: hidden;
 }
 
-/* Cards no Dark Mode */
-body.dark-theme .converter-card {
-  background-color: #121212; /* Cinza bem escuro para o card */
-  border: 1px solid #2d2d2d; /* Borda cinza sutil */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+/* O Overlay agora tem uma transição de opacidade mais suave */
+#overlay-fundo {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8); /* Azul marinho escuro com transparência */
+    backdrop-filter: blur(4px); /* Desfoque leve no fundo */
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-/* Inputs e Selects no Dark Mode */
-body.dark-theme .custom-input,
-body.dark-theme .custom-select {
-  background-color: #1e1e1e; /* Cinza médio para campos */
-  border-color: #333333;
-  color: #ffffff;
+/* O Card-focado como uma "Janela" */
+.card-focado {
+   position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    
+    /* Largura Responsiva: 90% no celular, fixo em 400px no PC */
+    width: 90% !important;
+    max-width: 380px !important; 
+    height: auto !important;
+    
+    height: auto !important;
+    z-index: 2500!important;
+    padding: 2rem !important;
+    border-radius: 2rem !important;
+    background: var(--card-bg) !important;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.45) !important;
+    
+    /* Animação de Surgimento */
+    animation: zoomInCard 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-body.dark-theme .custom-input::placeholder {
-  color: #666666;
+/* Ajustes internos para a telinha ficar mais bonita */
+.card-focado .card-body {
+    padding: 1.5rem !important;
+    background-color: var(--card-bg) !important;
+    border-radius: 2rem !important;
 }
 
-/* Caixa de Resultado no Dark Mode */
-body.dark-theme .result-box {
-  background-color: #1e1e1e; /* Fundo cinza para destaque */
-  border: 1px solid #333333;
+/* Ajustes internos para a "telinha" */
+.card-focado .form-control-lg {
+    background-color: #f8fafc !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 1.25rem !important;
+    font-weight: 700;
+    font-size: 2.5rem !important; /* Valor grande como na imagem */
+    text-align: center;
+    color: #475569;
+    margin-bottom: 1.5rem;
+}
+/* Efeito de foco para acessibilidade */
+.card-focado .form-select:focus {
+    border-color: #38bdf8 !important;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
 }
 
-body.dark-theme .result-box span {
-  color: #ffffff !important; /* Resultado sempre em branco */
+/* Ajuste nos formulários dentro da telinha */
+.card-focado .form-control, 
+.card-focado .form-select {
+    border-radius: 1rem !important;
+    padding: 0.75rem !important;
+    border: 1px solid #e2e8f0 !important;
+    background-color: #ffffff;
+    font-size: 0.95rem;
 }
 
-/* Texto Muted (Subtítulos) no Dark Mode */
-body.dark-theme .text-muted {
-  color: #a0a0a0 !important;
+.card-focado .form-select {
+    padding-left: 0.5rem !important;
+    padding-right: 1.8rem !important; /* Espaço para a setinha */
+    font-size: 0.85rem !important;    /* Fonte levemente menor para caber o texto */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;         /* Adiciona "..." se o nome for muito grande */
+    height: 45px !important;
 }
 
-/* Sidebar no Dark Mode (Mantendo o padrão dark mas com bordas cinzas) */
-body.dark-theme .sidebar {
-  background-color: #0a0a0a;
-  border-right: 1px solid #2d2d2d;
+/* Ajuste da linha de seleção (Selects lado a lado) */
+.card-focado .row.g-2 {
+    display: flex !important;
+    align-items: center !important;
 }
 
-body.dark-theme .custom-input,
-body.dark-theme .custom-select {
-  background: rgba(255, 255, 255, 0.05) !important; /* Transparência leve */
-  backdrop-filter: blur(10px); /* Efeito de vidro embaçado */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+.card-focado .col-auto {
+    font-size: 1.2rem;
+    color: #94a3b8;
 }
 
-body.dark-theme .custom-input:focus {
-  border-color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+.card-focado .col-auto.text-muted {
+    padding: 0 5px !important;
+    opacity: 0.6;
 }
 
-/* DESIGN SYSTEM SÊNIOR */
-:root {
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --accent: #3b82f6; /* Azul Moderno */
-  --surface: #0a0a0a;
+.card-focado .col {
+    flex: 1 1 0; /* Distribui o espaço igualmente entre os dois selects */
+    min-width: 0; /* Importante para o ellipsis funcionar */
 }
 
-@media (max-width: 768px) {
-  /* Esconde o lixo do layout desktop */
-  .container-fluid > .row {
-    display: none !important;
-  }
+.card-focado .result-box {
+    background: #f0f9ff !important;
+    border: 2px dashed #bae6fd !important;
+    color: #0369a1 !important;
+    font-size: 2rem;
+}
 
-  body {
-    background-color: #1a1d23 !important;
-    margin: 0;
-    padding: 0;
-  }
+/* ==========================================================================
+   NAV BAR
+   ========================================================================== */
+#main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 2500 !important;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e2e8f0;
+}
 
-  .app-container {
-    display: block !important;
-    position: relative; /* Mudamos de fixed para relative para facilitar o debug */
-    min-height: 100vh;
-    width: 100%;
-    background: #1a1d23;
-    padding: 20px 10px;
-  }
+.nav-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+    padding: 0.8rem 1.2rem !important; /* Mais respiro no clique */
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+}
 
-  .app-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+    transform: translateX(5px); /* Efeito suave ao passar o mouse */
+}
 
-  .app-logo {
-    color: white;
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin: 0;
-  }
+/* Cor do ícone do hambúrguer no mobile (modo claro) */
+.navbar-toggler-icon {
+    transition: filter 0.3s ease;
+   
+    
+}
 
-  .premium-card {
-    background: #ffffff !important;
-    margin-bottom: 16px;
-    border-radius: 25px;
-    padding: 20px;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+/* ==========================================================================
+   MENU HAMBÚRGUER: PRETO NO CLARO / BRANCO NO ESCURO
+   ========================================================================== */
 
-  /* Cores dos Círculos */
-  .icon-circle {
-    width: 45px;
-    height: 45px;
+/* 1. MODO CLARO (FORÇAR PRETO) */
+body:not(.dark-theme) .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    filter: none !important;
+}
+
+body:not(.dark-theme) .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 2. MODO ESCURO (FORÇAR BRANCO) */
+body.dark-theme .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    filter: none !important;
+}
+
+body.dark-theme .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+#main-nav {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+#main-nav .navbar-brand {
+    color: #1e293b !important; /* Nome "Convertify" em preto no modo claro */
+}
+
+
+.mode-icon {
+    color: #475569; /* Cor dos emojis no modo claro */
+}
+
+
+
+/* Responsividade dos Selects (Para não encavalar) */
+.form-select {
+    font-size: 0.85rem !important;
+    padding: 0.5rem !important;
+    text-overflow: ellipsis;
+}
+
+/* Ajuste da "Telinha" quando focada */
+section.card-focado .converter-card {
+    max-width: 380px !important;
+    margin: auto;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3) !important;
+}
+/* ==========================================================================
+   ESTILIZAÇAO DOS BOTÕES (MENU HAMBURGUER)
+   ========================================================================== */
+.btn-close{
+    /* No modo claro, ele já é preto por padrão */
+    filter: none;
+    opacity: 0.8;
+}
+
+body.dark-theme .btn-close {
+    filter: invert(1) brightness(200%) !important;
+}
+
+.btn-close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(0,0,0,0.05);
     border-radius: 50%;
+    padding: 0.5rem;
+    transition: var(--transition);
+}
+
+/* AJUSTES DO MENU OFFCANVAS (HAMBÚRGUER) */
+.navbar-nav {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente os itens */
+    gap: 15px !important; /* Espaçamento entre os itens */
+    gap: 0.75rem !important;
+}
+
+.nav-item {
+    width: 100%;
+    max-width: 320px; /* Largura elegante */
+}
+
+/* Estilização dos Links para melhor Acessibilidade */
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ícone alinhado à esquerda dentro do botão centralizado */
+    padding: 0.85rem 1.5rem !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+/* Indicador lateral (Acessibilidade Visual) */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    width: 4px;
+    height: 0%;
+    background-color: var(--accent);
+    border-radius: 4px;
+    transition: height 0.3s ease;
+}
+
+.nav-link:hover .icon-width {
+    transform: scale(1.2);
+}
+/* Lista de Navegação */
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centralização real */
+    width: 100%;
+    gap: 0.75rem !important;
+}
+
+.nav-item {
+    width: 100%;
+    max-width: 320px; /* Largura elegante */
+}
+
+/* O Link "Premium" */
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ícone alinhado à esquerda dentro do botão centralizado */
+    padding: 0.85rem 1.5rem !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+/* Indicador lateral (Acessibilidade Visual) */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    width: 4px;
+    height: 0%;
+    background-color: var(--accent);
+    border-radius: 4px;
+    transition: height 0.3s ease;
+}
+
+.nav-link:hover .icon-width {
+    transform: scale(1.2);
+}
+
+/* Feedback Visual de Foco (Teclado/Acessibilidade) */
+.nav-link:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Ajuste dos ícones dentro do link centralizado */
+.nav-link .icon-width {
+    font-size: 1.2rem;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
-    font-weight: bold;
-  }
-  .bg-green {
-    background: #10b981;
-    color: white;
-  }
-  .bg-orange {
-    background: #f59e0b;
-    color: white;
-  }
+    width: 30px;
+}
 
-  /* Controla a expansão */
-  .card-expandable {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.4s ease;
-  }
 
-  .premium-card.open .card-expandable {
-    max-height: 250px;
-    opacity: 1;
-    margin-top: 15px;
-  }
+/* ==========================================================================
+MENU OFFCANVAS PREMIUM
+========================================================================== */
 
-  .card-main {
+
+/* Centralização do Menu Mobile */
+.offcanvas-body {
+    padding: 2rem 1.5rem !important;
     display: flex;
-    align-items: center;
-  }
-  .card-title {
-    color: #1e293b;
-    font-weight: 700;
-    flex-grow: 1;
-  }
-
-  /* Estilo dos Inputs Premium */
-  .premium-input {
-    width: 100%;
-    border: none;
-    background: #f1f5f9;
-    padding: 15px;
-    border-radius: 15px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #1e293b;
-  }
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente se houver espaço */
+    text-align: center;
 }
 
-/* Cores de Fundo dos Novos Ícones */
-.bg-blue {
-  background: #3b82f6;
-  color: white;
+.offcanvas {
+    z-index: 3000 !important;
 }
-.bg-purple {
-  background: #a855f7;
-  color: white;
-}
-.bg-pink {
-  background: #ec4899;
-  color: white;
-}
-.bg-cyan {
-  background: #06b6d4;
-  color: white;
-}
-.bg-indigo {
-  background: #6366f1;
-  color: white;
+/* Força o título e textos do menu a ficarem pretos no modo claro */
+.offcanvas .offcanvas-title, 
+.offcanvas .nav-link,
+.offcanvas .small {
+    color: #1e293b !important;
 }
 
-/* Efeitos de Glow Laterais */
-.card-glow-blue {
-  border-left: 5px solid #3b82f6;
-  box-shadow: -10px 0 20px -10px rgba(59, 130, 246, 0.4);
+/* Menu Mobile Interativo (Offcanvas) */
+.offcanvas {
+    background-color: #ffffff !important; /* Menu branco no modo claro */
+    color: #1e293b !important;
+    transition: background-color 0.3s ease;
+    z-index: 2100 !important;
 }
-.card-glow-purple {
-  border-left: 5px solid #a855f7;
-  box-shadow: -10px 0 20px -10px rgba(168, 85, 247, 0.4);
-}
-.card-glow-pink {
-  border-left: 5px solid #ec4899;
-  box-shadow: -10px 0 20px -10px rgba(236, 72, 153, 0.4);
-}
-.card-glow-cyan {
-  border-left: 5px solid #06b6d4;
-  box-shadow: -10px 0 20px -10px rgba(6, 182, 212, 0.4);
-}
-.card-glow-indigo {
-  border-left: 5px solid #6366f1;
-  box-shadow: -10px 0 20px -10px rgba(99, 102, 241, 0.4);
+/* Garante que o fundo escuro do menu (backdrop) também suba de nível */
+.offcanvas-backdrop {
+    z-index: 2050 !important;
 }
 
-.tab-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 85px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-bottom: 20px; /* Espaço para a barra do iPhone */
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  z-index: 10000;
+/* Container do corpo do menu */
+.offcanvas-body {
+    padding: 2rem 1.5rem !important;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Ajuste para Dark Mode */
-body.dark-theme .tab-bar {
-  background: rgba(26, 29, 35, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+/* ==========================================================================
+ANIMAÇÃO DE ENTRADA PARA PARECER QUE A TELINHA NASCEU
+========================================================================== */
+@keyframes zoomInCard {
+    from { opacity: 0; transform: translate(-50%, -45%) scale(0.9); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
-.tab-item {
-  background: none;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: #8e8e93;
-  transition: 0.3s;
+/* ==========================================================================
+VARIOS TIPOS DE TELA DESKTOP, MOBILE, IPAD
+========================================================================== */
+
+/* Media query para telas grandes */
+@media (min-width: 992px) {
+    .nav-link:hover {
+        transform: translateY(-2px); /* No desktop flutua para cima */
+    }
+
+    .card-focado {
+        /* Reduzimos o tamanho no Desktop para ficar mais estético e centralizado */
+        max-width: 380px !important; 
+        padding: 2.5rem !important; /* Mais respiro interno */
+    }
+
+    /* Esconde elementos desnecessários no modo focado para limpar o visual */
+    .card-focado .text-muted {
+        font-size: 0.8rem;
+    }
+
+    .card-focado .icon-box-large {
+        width: 60px; /* Ícone levemente menor no modal desktop */
+        height: 60px;
+        margin-bottom: 1rem;
+    }
 }
 
-.tab-item.active {
-  color: #3b82f6;
-  transform: translateY(-2px);
+/* Media Query para telas muito pequenas */
+@media (max-width: 360px) {
+    .card-focado .form-select {
+        font-size: 0.75rem !important; /* Diminui a fonte se o celular for muito antigo/pequeno */
+    }
 }
 
-.tab-icon {
-  font-size: 1.4rem;
+
+/* Padronização de Cores e Bordas */
+.card-moeda, .card-comp {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
 }
 
-.tab-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+
+/* Media Query para telas muito pequenas (mobile) */
+@media (max-width: 480px) {
+    .card-focado {
+        width: 95% !important;
+        max-width: none !important;
+    }
 }
 
-/* Espaçamento extra no final da lista para a Tab Bar não cobrir o último card */
-.app-container {
-  padding-bottom: 120px !important;
-}
 
-/* .sidebar efeito */
-
-/* Fundo que trava a tela atrás */
-#overlay-fundo {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
-  z-index: 1040;
-}
-
-/* Card centralizado sem ocupar a tela toda */
-.card-focado {
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  z-index: 1050;
-  width: 90% !important;
-  max-width: 400px !important; /* Tamanho controlado */
-  height: auto !important;
-  margin: 0 !important;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3) !important;
-  border-radius: 20px !important;
-}
-
-/* Otimização de Performance */
-.card-focado,
-.form-animado,
-.preview-animado {
-  will-change: transform, opacity;
-  backface-visibility: hidden; /* Evita tremores no texto */
-}
