@@ -87,89 +87,89 @@
               </div>
             </div>
 
-            <div class="row g-4 mb-5">
-             <section id="moedas" class="col-12 col-md-6 col-xl-4 d-flex">
-  <div class="card converter-card card-moeda h-100 w-100">
-    <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
-      
-      <div id="preview-moedas" class="w-100" onclick="focarConversor('moedas')">
-        <div class="icon-box-large bg-green-light mx-auto mb-3" style="font-size: 3rem">
-          💰
-        </div>
-        <h2 class="h4 fw-bold">Moedas</h2>
-        <p class="text-muted">Clique para converter</p>
-      </div>
+                  <div class="row g-4 mb-5">
+                  <section id="moedas" class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card converter-card card-moeda h-100 w-100">
+          <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
+            
+            <div id="preview-moedas" class="w-100" onclick="focarConversor('moedas')">
+              <div class="icon-box-large bg-green-light mx-auto mb-3" style="font-size: 3rem">
+                💰
+              </div>
+              <h2 class="h4 fw-bold">Moedas</h2>
+              <p class="text-muted">Clique para converter</p>
+            </div>
 
-      <div id="form-moedas" class="d-none w-100 text-start">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="h5 mb-0 fw-bold">Moedas</h2>
-          <button type="button" class="btn-close" onclick="removerFoco()"></button>
-        </div>
+            <div id="form-moedas" class="d-none w-100 text-start">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 mb-0 fw-bold">Moedas</h2>
+                <button type="button" class="btn-close" onclick="removerFoco()"></button>
+              </div>
 
-        <input type="number" id="currency-amount" class="form-control mb-3" placeholder="0.00">
+              <input type="number" id="currency-amount" class="form-control mb-3" placeholder="0.00">
 
-        <div class="row g-2 mb-3 align-items-center">
-          <div class="col">
-            <select id="currency-from" class="form-select">
-              <option value="BRL" selected>BRL - Real</option>
-              <option value="USD">USD - Dólar</option>
-              <option value="EUR">EUR - Euro</option>
-              <option value="GBP">GBP - Libra</option>
-              <option value="JPY">JPY - Iene</option>
-              <option value="CAD">CAD - Dólar CAN</option>
-              <option value="AUD">AUD - Dólar AUS</option>
-              <option value="CHF">CHF - Franco Suíço</option>
-              <option value="CNY">CNY - Yuan Chinês</option>
-              <option value="ARS">ARS - Peso ARG</option>
-              <option value="MXN">MXN - Peso MEX</option>
-              <option value="CLP">CLP - Peso CHI</option>
-              <option value="COP">COP - Peso COL</option>
-              <option value="PEN">PEN - Sol Peruano</option>
-              <option value="UYU">UYU - Peso URU</option>
-              <option value="KRW">KRW - Won Sul-Cor.</option>
-              <option value="INR">INR - Rupia Indiana</option>
-              <option value="ZAR">ZAR - Rand Sul-Afr.</option>
-              <option value="TRY">TRY - Lira Turca</option>
-              <option value="SEK">SEK - Coroa Sueca</option>
-            </select>
+              <div class="row g-2 mb-3 align-items-center">
+                <div class="col">
+                  <select id="currency-from" class="form-select">
+                    <option value="BRL" selected>BRL - Real</option>
+                    <option value="USD">USD - Dólar</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - Libra</option>
+                    <option value="JPY">JPY - Iene</option>
+                    <option value="CAD">CAD - Dólar CAN</option>
+                    <option value="AUD">AUD - Dólar AUS</option>
+                    <option value="CHF">CHF - Franco Suíço</option>
+                    <option value="CNY">CNY - Yuan Chinês</option>
+                    <option value="ARS">ARS - Peso ARG</option>
+                    <option value="MXN">MXN - Peso MEX</option>
+                    <option value="CLP">CLP - Peso CHI</option>
+                    <option value="COP">COP - Peso COL</option>
+                    <option value="PEN">PEN - Sol Peruano</option>
+                    <option value="UYU">UYU - Peso URU</option>
+                    <option value="KRW">KRW - Won Sul-Cor.</option>
+                    <option value="INR">INR - Rupia Indiana</option>
+                    <option value="ZAR">ZAR - Rand Sul-Afr.</option>
+                    <option value="TRY">TRY - Lira Turca</option>
+                    <option value="SEK">SEK - Coroa Sueca</option>
+                  </select>
+                </div>
+
+                <div class="col-auto text-muted fw-bold">→</div>
+
+                <div class="col">
+                  <select id="currency-to" class="form-select">
+                    <option value="USD" selected>USD - Dólar</option>
+                    <option value="BRL">BRL - Real</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - Libra</option>
+                    <option value="JPY">JPY - Iene</option>
+                    <option value="CAD">CAD - Dólar CAN</option>
+                    <option value="AUD">AUD - Dólar AUS</option>
+                    <option value="CHF">CHF - Franco Suíço</option>
+                    <option value="CNY">CNY - Yuan Chinês</option>
+                    <option value="ARS">ARS - Peso ARG</option>
+                    <option value="MXN">MXN - Peso MEX</option>
+                    <option value="CLP">CLP - Peso CHI</option>
+                    <option value="COP">COP - Peso COL</option>
+                    <option value="PEN">PEN - Sol Peruano</option>
+                    <option value="UYU">UYU - Peso URU</option>
+                    <option value="KRW">KRW - Won Sul-Cor.</option>
+                    <option value="INR">INR - Rupia Indiana</option>
+                    <option value="ZAR">ZAR - Rand Sul-Afr.</option>
+                    <option value="TRY">TRY - Lira Turca</option>
+                    <option value="SEK">SEK - Coroa Sueca</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="result-box mt-2 p-3 bg-light rounded text-center">
+                <span id="currency-result" class="fw-bold">--</span>
+              </div>
+            </div>
+
           </div>
-
-          <div class="col-auto text-muted fw-bold">→</div>
-
-          <div class="col">
-            <select id="currency-to" class="form-select">
-              <option value="USD" selected>USD - Dólar</option>
-              <option value="BRL">BRL - Real</option>
-              <option value="EUR">EUR - Euro</option>
-              <option value="GBP">GBP - Libra</option>
-              <option value="JPY">JPY - Iene</option>
-              <option value="CAD">CAD - Dólar CAN</option>
-              <option value="AUD">AUD - Dólar AUS</option>
-              <option value="CHF">CHF - Franco Suíço</option>
-              <option value="CNY">CNY - Yuan Chinês</option>
-              <option value="ARS">ARS - Peso ARG</option>
-              <option value="MXN">MXN - Peso MEX</option>
-              <option value="CLP">CLP - Peso CHI</option>
-              <option value="COP">COP - Peso COL</option>
-              <option value="PEN">PEN - Sol Peruano</option>
-              <option value="UYU">UYU - Peso URU</option>
-              <option value="KRW">KRW - Won Sul-Cor.</option>
-              <option value="INR">INR - Rupia Indiana</option>
-              <option value="ZAR">ZAR - Rand Sul-Afr.</option>
-              <option value="TRY">TRY - Lira Turca</option>
-              <option value="SEK">SEK - Coroa Sueca</option>
-            </select>
-          </div>
         </div>
-
-        <div class="result-box mt-2 p-3 bg-light rounded text-center">
-          <span id="currency-result" class="fw-bold">--</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
               <section id="comprimento" class="col-12 col-md-6 col-xl-4 d-flex">
                 <div class="card converter-card card-comp h-100 w-100">
                   <div
