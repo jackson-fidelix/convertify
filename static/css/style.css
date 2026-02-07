@@ -2,94 +2,104 @@
    DESIGN SYSTEM & VARIÁVEIS TOTAIS
    ========================================================================== */
 :root {
-  /* Cores */
-  --bg-body: #f8f9fc;
-  --sidebar-dark: #1a1d21;
-  --accent: #3b82f6;
-  --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  
-  /* Cores por Categoria*/
-  --color-moeda: #10b981;
-  --color-temp: #f59e0b;
-  --color-comp: #3b82f6;
-  --color-massa: #6366f1;
-  --color-tempo: #ec4899;
+    /* Cores */
+    --bg-body: #f8f9fc;
+    --sidebar-dark: #1a1d21;
+    --accent: #3b82f6;
+    --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  /* Espaçamento Fluido (Clamp) */
-  --space-sm: clamp(10px, 1.5vw, 20px);
-  --space-md: clamp(15px, 2.5vw, 35px);
-  --space-lg: clamp(20px, 4vw, 50px);
-  
-  /* Tipografia Fluida */
-  --fs-base: clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
-  --fs-h1: clamp(1.5rem, 5vw, 2.5rem);
-  --fs-card-title: clamp(1.1rem, 2vw, 1.4rem);
+    /* Cores por Categoria*/
+    --color-moeda: #10b981;
+    --color-temp: #f59e0b;
+    --color-comp: #3b82f6;
+    --color-massa: #6366f1;
+    --color-tempo: #ec4899;
+
+    /* Espaçamento Fluido (Clamp) */
+    --space-sm: clamp(10px, 1.5vw, 20px);
+    --space-md: clamp(15px, 2.5vw, 35px);
+    --space-lg: clamp(20px, 4vw, 50px);
+
+    /* Tipografia Fluida */
+    --fs-base: clamp(0.875rem, 0.5vw + 0.75rem, 1rem);
+    --fs-h1: clamp(1.5rem, 5vw, 2.5rem);
+    --fs-card-title: clamp(1.1rem, 2vw, 1.4rem);
 
 
-  /* Cores Profissionais - Paleta Slate/Blue */
-  --card-bg: #ffffff;
-  --bg-app: #f8fafc;
-  --text-title: #1e293b;
-  --text-body: #475569;
- 
-  
-  /* Sombras "Soft" (O segredo do design moderno) */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.05);
-  --shadow-hover: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-  
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --radius: 1.25rem;
+    /* Cores Profissionais - Paleta Slate/Blue */
+    --card-bg: #ffffff;
+    --bg-app: #f8fafc;
+    --text-title: #1e293b;
+    --text-body: #475569;
+
+
+    /* Sombras "Soft" (O segredo do design moderno) */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 1.25rem;
 }
-* { box-sizing: border-box; }
+
+* {
+    box-sizing: border-box;
+}
 
 /* ==========================================================================
    RESET & ESTRUTURA BASE
    ========================================================================== */
 body {
-  font-family: "Inter", sans-serif;
-  background-color: var(--bg-body);
-  color: #1e293b;
-  font-size: var(--fs-base);
-  transition: all 0.5s ease;
-  margin: 0;
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg-body);
+    color: #1e293b;
+    font-size: var(--fs-base);
+    transition: all 0.5s ease;
+    margin: 0;
 }
 
-h1.h3 { font-size: var(--fs-h1) !important; font-weight: 800; color: #1e293b; }
-.h4.fw-bold { font-size: var(--fs-card-title); }
+h1.h3 {
+    font-size: var(--fs-h1) !important;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.h4.fw-bold {
+    font-size: var(--fs-card-title);
+}
 
 /* Grid de Layout Principal */
-.container-fluid > .row {
-  display: flex;
-  flex-wrap: nowrap; /* Impede quebra brusca no desktop */
-  min-height: 100vh;
+.container-fluid>.row {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Impede quebra brusca no desktop */
+    min-height: 100vh;
 }
 
 .main-content {
-  flex: 1;
-  padding: var(--space-md) !important;
-  width: 100%;
+    flex: 1;
+    padding: var(--space-md) !important;
+    width: 100%;
 }
-
 
 /* ==========================================================================
    CARDS CONVERSORES (O Pulo do Gato)
    ========================================================================== */
 .converter-card {
-  border: 1px solid #e2e8f0;
-  border-radius: var(--radius);
-  background: var(--card-bg);
-  box-shadow: var(--shadow-sm);
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius);
+    background: var(--card-bg);
+    box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
 }
 
 .converter-card:hover {
-transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent);
 }
 
 
@@ -97,17 +107,18 @@ transform: translateY(-5px);
    EDIÇÃO E AJUSTES DOS ICONES
    ========================================================================== */
 .icon-box-large {
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-  transition: var(--transition);
-  filter: grayscale(0.2);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    transition: var(--transition);
+    filter: grayscale(0.2);
 }
+
 .converter-card:hover .icon-box-large {
-  filter: brightness(1.2);
+    filter: brightness(1.2);
     transform: scale(1.05);
 }
 
@@ -119,6 +130,7 @@ transform: translateY(-5px);
     align-items: center;
     transition: transform 0.3s ease;
 }
+
 /* Ajuste do ícone para não sumir na centralização */
 .icon-width {
     width: 32px;
@@ -132,19 +144,21 @@ transform: translateY(-5px);
 /* ==========================================================================
    FORMULÁRIOS INTERNOS (Quando o card foca)
    ========================================================================== */
-.form-control, .form-select {
-  border: 1.5px solid #e2e8f0;
-  border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  transition: var(--transition);
-  background-color: #fdfdfd;
+.form-control,
+.form-select {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background-color: #fdfdfd;
 }
 
-.form-control:focus, .form-select:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-  background-color: #fff;
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    background-color: #fff;
 }
 
 /* ==========================================================================
@@ -153,18 +167,18 @@ transform: translateY(-5px);
 .result-box {
     background-color: rgba(0, 0, 0, 0.05);
     border: 2px dashed #38bdf8;
-     border-radius: 1rem;
-     min-height: 55px;
+    border-radius: 1rem;
+    min-height: 55px;
     display: flex;
     align-items: center;
-     justify-content: center;
+    justify-content: center;
     transition: var(--transition);
 }
 
 .result-box span {
-  font-size: 1.75rem;
-  letter-spacing: -0.025em;
-  color: var(--text-title);
+    font-size: 1.75rem;
+    letter-spacing: -0.025em;
+    color: var(--text-title);
 }
 
 
@@ -175,20 +189,23 @@ AJUSTE DE TEXTOS BRANCOS (MODO DARK)
 /* Efeito Hover - Modo Claro */
 
 body:not(.dark-theme) .converter-card:hover {
-    border-color: #3b82f6 !important; /* Azul Accent */
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3) !important; /* Brilho suave azul */
-    transform: translateY(-5px); /* Leve elevação para destacar o brilho */
+    border-color: #3b82f6 !important;
+    /* Azul Accent */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3) !important;
+    /* Brilho suave azul */
+    transform: translateY(-5px);
+    /* Leve elevação para destacar o brilho */
 }
 
 /* Força o título a ficar branco quando o body tiver a classe dark-theme */
-body.dark-theme h1.h3, 
+body.dark-theme h1.h3,
 body.dark-theme .h3 {
     color: #ffffff !important;
 }
 
-body.dark-theme h1, 
-body.dark-theme h2, 
-body.dark-theme h3, 
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
 body.dark-theme h4 {
     color: #f8fafc !important;
 }
@@ -201,10 +218,13 @@ body:not(.dark-theme) .nav-link {
 }
 
 body:not(.dark-theme) .nav-link:hover {
-    color: #020617 !important; /* Azul do seu accent */
-    background: rgba(59, 130, 246, 0.08); /* Fundo azul translúcido */
+    color: #020617 !important;
+    /* Azul do seu accent */
+    background: rgba(59, 130, 246, 0.08);
+    /* Fundo azul translúcido */
     border-radius: 8px;
-    transform: translateY(-2px); /* Leve subida */
+    transform: translateY(-2px);
+    /* Leve subida */
 }
 
 /* Linha decorativa que cresce embaixo no Modo Claro */
@@ -228,7 +248,8 @@ body:not(.dark-theme) .nav-link:hover::after {
 body.dark-theme #main-nav .navbar-brand.text-white {
     color: #ffffff !important;
     opacity: 1 !important;
-    -webkit-text-fill-color: #ffffff !important; /* Garante em navegadores mobile */
+    -webkit-text-fill-color: #ffffff !important;
+    /* Garante em navegadores mobile */
 }
 
 /* Garante que o texto não "suma" se houver algum reset de modo claro */
@@ -237,8 +258,8 @@ body.dark-theme .navbar-brand {
 }
 
 body.dark-theme .navbar-brand,
-body.dark-theme h1, 
-body.dark-theme h2, 
+body.dark-theme h1,
+body.dark-theme h2,
 body.dark-theme h5,
 body.dark-theme .h3,
 body.dark-theme .h4 {
@@ -246,12 +267,13 @@ body.dark-theme .h4 {
     font-weight: 700;
 }
 
-body.dark-theme .text-muted, 
-body.dark-theme p, 
+body.dark-theme .text-muted,
+body.dark-theme p,
 body.dark-theme .small,
 body.dark-theme .card-body span {
     color: #ffffff !important;
-    opacity: 1 !important; /* Força o brilho total do branco */
+    opacity: 1 !important;
+    /* Força o brilho total do branco */
 }
 
 /* Ajuste para o texto dentro dos selects (unidades de medida) */
@@ -261,12 +283,13 @@ body.dark-theme .form-control {
 }
 
 /* Subtítulos e Textos Auxiliares (Clique para converter, Metros, Km, etc) */
-body.dark-theme p, 
-body.dark-theme .text-muted, 
+body.dark-theme p,
+body.dark-theme .text-muted,
 body.dark-theme .small,
 body.dark-theme span:not(.badge) {
     color: #ffffff !important;
-    opacity: 1 !important; /* Remove a transparência do text-muted */
+    opacity: 1 !important;
+    /* Remove a transparência do text-muted */
 }
 
 /* Ajuste específico para os labels de dentro do card focado */
@@ -297,10 +320,11 @@ body.dark-theme .offcanvas-header {
     border-bottom-color: #334155 !important;
 }
 
-   
+
 /* 1. Configuração de Cores e Fundo Base */
 body.dark-theme {
-    background-color: #020617 !important; /* Azul Marinho Profundo */
+    background-color: #020617 !important;
+    /* Azul Marinho Profundo */
     color: #f8fafc;
 }
 
@@ -310,34 +334,38 @@ body.dark-theme .form-control::placeholder {
 }
 
 /* 2. Unificação de Cor: Externo e Interno do Card Focado */
-body.dark-theme .card-focado, 
+body.dark-theme .card-focado,
 body.dark-theme .card-focado .card-body {
-    background-color: #0f172a !important; /* Mesma cor interna e externa */
+    background-color: #0f172a !important;
+    /* Mesma cor interna e externa */
     border: 1px solid #334155 !important;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7) !important;
 }
 
 /* 3. Cards da Grade (Não focados) */
 body.dark-theme .converter-card {
-    background-color: #1e293b !important; /* Um tom acima do fundo para contraste */
+    background-color: #1e293b !important;
+    /* Um tom acima do fundo para contraste */
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ffffff;
 }
 
 body.dark-theme .converter-card:hover {
-    border-color: #38bdf8 !important; /* Azul Ciano Neon */
+    border-color: #38bdf8 !important;
+    /* Azul Ciano Neon */
     /* O "Glow" azul brilhante abaixo */
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 
-                inset 0 0 10px rgba(56, 189, 248, 0.1) !important;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4),
+        inset 0 0 10px rgba(56, 189, 248, 0.1) !important;
     transform: translateY(-5px);
 }
 
 /* 4. Inputs, Selects e Telinhas */
-body.dark-theme .form-control, 
+body.dark-theme .form-control,
 body.dark-theme .form-select,
 body.dark-theme .card-focado .form-control,
 body.dark-theme .card-focado .form-select {
-    background-color: #020617 !important; /* Fundo mais escuro para os campos */
+    background-color: #020617 !important;
+    /* Fundo mais escuro para os campos */
     color: #f8fafc !important;
     border: 1px solid #334155 !important;
 }
@@ -374,10 +402,13 @@ body.dark-theme .nav-link {
 }
 
 body.dark-theme .nav-link:hover {
-    color: #38bdf8 !important; /* Azul ciano brilhante */
-    background: rgba(255, 255, 255, 0.05); /* Brilho de vidro */
+    color: #38bdf8 !important;
+    /* Azul ciano brilhante */
+    background: rgba(255, 255, 255, 0.05);
+    /* Brilho de vidro */
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2); /* Glow sutil */
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+    /* Glow sutil */
 }
 
 
@@ -401,19 +432,35 @@ body.dark-theme .nav-link:hover::after {
 
 /* 7. Ícone Hambúrguer e Botão Fechar */
 body.dark-theme .navbar-toggler-icon {
-   /* Injeta o SVG do hambúrguer com stroke branco */
+    /* Injeta o SVG do hambúrguer com stroke branco */
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-    filter: none !important; /* Remove qualquer filtro anterior */
+    filter: none !important;
+    /* Remove qualquer filtro anterior */
 }
 
 /* 8. Brilhos dos Ícones (Glows específicos mantidos) */
-body.dark-theme .card-moeda .icon-box-large { background-color: rgba(34, 197, 94, 0.15) !important; box-shadow: 0 0 25px rgba(34, 197, 94, 0.2); }
-body.dark-theme .card-comp .icon-box-large { background-color: rgba(56, 189, 248, 0.15) !important; box-shadow: 0 0 25px rgba(56, 189, 248, 0.2); }
-body.dark-theme .card-tempo .icon-box-large { background-color: rgba(251, 191, 36, 0.15) !important; box-shadow: 0 0 25px rgba(251, 191, 36, 0.2); }
-body.dark-theme .card-massa .icon-box-large { background-color: rgba(168, 85, 247, 0.15) !important; box-shadow: 0 0 25px rgba(168, 85, 247, 0.2); }
+body.dark-theme .card-moeda .icon-box-large {
+    background-color: rgba(34, 197, 94, 0.15) !important;
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.2);
+}
+
+body.dark-theme .card-comp .icon-box-large {
+    background-color: rgba(56, 189, 248, 0.15) !important;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+}
+
+body.dark-theme .card-tempo .icon-box-large {
+    background-color: rgba(251, 191, 36, 0.15) !important;
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.2);
+}
+
+body.dark-theme .card-massa .icon-box-large {
+    background-color: rgba(168, 85, 247, 0.15) !important;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.2);
+}
 
 /* 9. Container do Switch (Sem bordas) */
-.dark-mode-container, 
+.dark-mode-container,
 body.dark-theme .dark-mode-container {
     border-top: none !important;
     padding-top: 1rem;
@@ -426,12 +473,14 @@ body.dark-theme .dark-mode-container {
     display: none;
     position: fixed;
     inset: 0;
-  background: rgba(15, 23, 42, 0.75); /* Mais transparente para ver o fundo levemente */
-    backdrop-filter: blur(8px); /* Desfoque mais elegante */
+    background: rgba(15, 23, 42, 0.75);
+    /* Mais transparente para ver o fundo levemente */
+    backdrop-filter: blur(8px);
+    /* Desfoque mais elegante */
     z-index: 2000;
     opacity: 0;
     transition: opacity 0.3s ease;
-  
+
 }
 
 body.modal-open {
@@ -443,8 +492,10 @@ body.modal-open {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(15, 23, 42, 0.8); /* Azul marinho escuro com transparência */
-    backdrop-filter: blur(4px); /* Desfoque leve no fundo */
+    background: rgba(15, 23, 42, 0.8);
+    /* Azul marinho escuro com transparência */
+    backdrop-filter: blur(4px);
+    /* Desfoque leve no fundo */
     z-index: 2000;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -452,23 +503,23 @@ body.modal-open {
 
 /* O Card-focado como uma "Janela" */
 .card-focado {
-   position: fixed !important;
+    position: fixed !important;
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-    
+
     /* Largura Responsiva: 90% no celular, fixo em 400px no PC */
     width: 90% !important;
-    max-width: 380px !important; 
+    max-width: 380px !important;
     height: auto !important;
-    
+
     height: auto !important;
-    z-index: 2500!important;
+    z-index: 2500 !important;
     padding: 2rem !important;
     border-radius: 2rem !important;
     background: var(--card-bg) !important;
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.45) !important;
-    
+
     /* Animação de Surgimento */
     animation: zoomInCard 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -487,11 +538,13 @@ body.modal-open {
     border: 2px solid #e2e8f0 !important;
     border-radius: 1.25rem !important;
     font-weight: 700;
-    font-size: 2.5rem !important; /* Valor grande como na imagem */
+    font-size: 2.5rem !important;
+    /* Valor grande como na imagem */
     text-align: center;
     color: #475569;
     margin-bottom: 1.5rem;
 }
+
 /* Efeito de foco para acessibilidade */
 .card-focado .form-select:focus {
     border-color: #38bdf8 !important;
@@ -499,7 +552,7 @@ body.modal-open {
 }
 
 /* Ajuste nos formulários dentro da telinha */
-.card-focado .form-control, 
+.card-focado .form-control,
 .card-focado .form-select {
     border-radius: 1rem !important;
     padding: 0.75rem !important;
@@ -510,11 +563,14 @@ body.modal-open {
 
 .card-focado .form-select {
     padding-left: 0.5rem !important;
-    padding-right: 1.8rem !important; /* Espaço para a setinha */
-    font-size: 0.85rem !important;    /* Fonte levemente menor para caber o texto */
+    padding-right: 1.8rem !important;
+    /* Espaço para a setinha */
+    font-size: 0.85rem !important;
+    /* Fonte levemente menor para caber o texto */
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;         /* Adiciona "..." se o nome for muito grande */
+    text-overflow: ellipsis;
+    /* Adiciona "..." se o nome for muito grande */
     height: 45px !important;
 }
 
@@ -535,8 +591,10 @@ body.modal-open {
 }
 
 .card-focado .col {
-    flex: 1 1 0; /* Distribui o espaço igualmente entre os dois selects */
-    min-width: 0; /* Importante para o ellipsis funcionar */
+    flex: 1 1 0;
+    /* Distribui o espaço igualmente entre os dois selects */
+    min-width: 0;
+    /* Importante para o ellipsis funcionar */
 }
 
 .card-focado .result-box {
@@ -559,7 +617,8 @@ body.modal-open {
 
 .nav-link {
     color: rgba(255, 255, 255, 0.7) !important;
-    padding: 0.8rem 1.2rem !important; /* Mais respiro no clique */
+    padding: 0.8rem 1.2rem !important;
+    /* Mais respiro no clique */
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 12px;
 }
@@ -567,14 +626,15 @@ body.modal-open {
 .nav-link:hover {
     background: rgba(255, 255, 255, 0.1);
     color: #fff !important;
-    transform: translateX(5px); /* Efeito suave ao passar o mouse */
+    transform: translateX(5px);
+    /* Efeito suave ao passar o mouse */
 }
 
 /* Cor do ícone do hambúrguer no mobile (modo claro) */
 .navbar-toggler-icon {
     transition: filter 0.3s ease;
-   
-    
+
+
 }
 
 /* ==========================================================================
@@ -607,12 +667,14 @@ body.dark-theme .navbar-toggler {
 }
 
 #main-nav .navbar-brand {
-    color: #1e293b !important; /* Nome "Convertify" em preto no modo claro */
+    color: #1e293b !important;
+    /* Nome "Convertify" em preto no modo claro */
 }
 
 
 .mode-icon {
-    color: #475569; /* Cor dos emojis no modo claro */
+    color: #475569;
+    /* Cor dos emojis no modo claro */
 }
 
 
@@ -630,10 +692,11 @@ section.card-focado .converter-card {
     margin: auto;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3) !important;
 }
+
 /* ==========================================================================
    ESTILIZAÇAO DOS BOTÕES (MENU HAMBURGUER)
    ========================================================================== */
-.btn-close{
+.btn-close {
     /* No modo claro, ele já é preto por padrão */
     filter: none;
     opacity: 0.8;
@@ -647,7 +710,7 @@ body.dark-theme .btn-close {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    background: rgba(0,0,0,0.05);
+    background: rgba(0, 0, 0, 0.05);
     border-radius: 50%;
     padding: 0.5rem;
     transition: var(--transition);
@@ -658,14 +721,17 @@ body.dark-theme .btn-close {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente os itens */
-    gap: 15px !important; /* Espaçamento entre os itens */
+    align-items: center;
+    /* Centraliza horizontalmente os itens */
+    gap: 15px !important;
+    /* Espaçamento entre os itens */
     gap: 0.75rem !important;
 }
 
 .nav-item {
     width: 100%;
-    max-width: 320px; /* Largura elegante */
+    max-width: 320px;
+    /* Largura elegante */
 }
 
 /* Estilização dos Links para melhor Acessibilidade */
@@ -673,7 +739,8 @@ body.dark-theme .btn-close {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Ícone alinhado à esquerda dentro do botão centralizado */
+    justify-content: flex-start;
+    /* Ícone alinhado à esquerda dentro do botão centralizado */
     padding: 0.85rem 1.5rem !important;
     font-size: 0.95rem;
     font-weight: 500;
@@ -699,18 +766,21 @@ body.dark-theme .btn-close {
 .nav-link:hover .icon-width {
     transform: scale(1.2);
 }
+
 /* Lista de Navegação */
 .navbar-nav {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centralização real */
+    align-items: center;
+    /* Centralização real */
     width: 100%;
     gap: 0.75rem !important;
 }
 
 .nav-item {
     width: 100%;
-    max-width: 320px; /* Largura elegante */
+    max-width: 320px;
+    /* Largura elegante */
 }
 
 /* O Link "Premium" */
@@ -718,7 +788,8 @@ body.dark-theme .btn-close {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Ícone alinhado à esquerda dentro do botão centralizado */
+    justify-content: flex-start;
+    /* Ícone alinhado à esquerda dentro do botão centralizado */
     padding: 0.85rem 1.5rem !important;
     font-size: 0.95rem;
     font-weight: 500;
@@ -771,15 +842,17 @@ MENU OFFCANVAS PREMIUM
     padding: 2rem 1.5rem !important;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza verticalmente se houver espaço */
+    justify-content: center;
+    /* Centraliza verticalmente se houver espaço */
     text-align: center;
 }
 
 .offcanvas {
     z-index: 3000 !important;
 }
+
 /* Força o título e textos do menu a ficarem pretos no modo claro */
-.offcanvas .offcanvas-title, 
+.offcanvas .offcanvas-title,
 .offcanvas .nav-link,
 .offcanvas .small {
     color: #1e293b !important;
@@ -787,11 +860,13 @@ MENU OFFCANVAS PREMIUM
 
 /* Menu Mobile Interativo (Offcanvas) */
 .offcanvas {
-    background-color: #ffffff !important; /* Menu branco no modo claro */
+    background-color: #ffffff !important;
+    /* Menu branco no modo claro */
     color: #1e293b !important;
     transition: background-color 0.3s ease;
     z-index: 2100 !important;
 }
+
 /* Garante que o fundo escuro do menu (backdrop) também suba de nível */
 .offcanvas-backdrop {
     z-index: 2050 !important;
@@ -808,8 +883,15 @@ MENU OFFCANVAS PREMIUM
 ANIMAÇÃO DE ENTRADA PARA PARECER QUE A TELINHA NASCEU
 ========================================================================== */
 @keyframes zoomInCard {
-    from { opacity: 0; transform: translate(-50%, -45%) scale(0.9); }
-    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 /* ==========================================================================
@@ -819,13 +901,15 @@ VARIOS TIPOS DE TELA DESKTOP, MOBILE, IPAD
 /* Media query para telas grandes */
 @media (min-width: 992px) {
     .nav-link:hover {
-        transform: translateY(-2px); /* No desktop flutua para cima */
+        transform: translateY(-2px);
+        /* No desktop flutua para cima */
     }
 
     .card-focado {
         /* Reduzimos o tamanho no Desktop para ficar mais estético e centralizado */
-        max-width: 380px !important; 
-        padding: 2.5rem !important; /* Mais respiro interno */
+        max-width: 380px !important;
+        padding: 2.5rem !important;
+        /* Mais respiro interno */
     }
 
     /* Esconde elementos desnecessários no modo focado para limpar o visual */
@@ -834,7 +918,8 @@ VARIOS TIPOS DE TELA DESKTOP, MOBILE, IPAD
     }
 
     .card-focado .icon-box-large {
-        width: 60px; /* Ícone levemente menor no modal desktop */
+        width: 60px;
+        /* Ícone levemente menor no modal desktop */
         height: 60px;
         margin-bottom: 1rem;
     }
@@ -843,15 +928,17 @@ VARIOS TIPOS DE TELA DESKTOP, MOBILE, IPAD
 /* Media Query para telas muito pequenas */
 @media (max-width: 360px) {
     .card-focado .form-select {
-        font-size: 0.75rem !important; /* Diminui a fonte se o celular for muito antigo/pequeno */
+        font-size: 0.75rem !important;
+        /* Diminui a fonte se o celular for muito antigo/pequeno */
     }
 }
 
 
 /* Padronização de Cores e Bordas */
-.card-moeda, .card-comp {
+.card-moeda,
+.card-comp {
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-    border: 1px solid rgba(0,0,0,0.1) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 
@@ -862,5 +949,3 @@ VARIOS TIPOS DE TELA DESKTOP, MOBILE, IPAD
         max-width: none !important;
     }
 }
-
-

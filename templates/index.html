@@ -1,442 +1,371 @@
-  <!doctype html>
-  <html lang="pt-br">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Convertify - Dashboard Profissional</title>
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-        rel="stylesheet"
-      />
-       <link rel="stylesheet" href="../static/css/style.css" />  
-       <!-- <link rel="stylesheet" href="../static/css/TESTE.CSS/teste.css">  -->
-    </head>
-    <body>
-                <div id="overlay-fundo" onclick="removerFoco()"></div>
-            <nav class="navbar navbar-expand-lg sticky-top shadow-sm px-3" id="main-nav">
-              <div class="container-fluid d-flex align-items-center justify-content-between">
-                <a class="navbar-brand fw-bold fs-4 text-white m-0" href="#">Convertify</a>
+<!doctype html>
+<html lang="pt-br">
 
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-                  <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-                </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convertify - Dashboard Profissional</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/css/style.css" />
+  <!-- <link rel="stylesheet" href="../static/css/TESTE.CSS/teste.css">  -->
+</head>
 
-                <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="offcanvasNavbar">
-                  <div class="offcanvas-header border-bottom border-secondary">
-                    <h5 class="offcanvas-title fw-bold text-white">Menu Convertify</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-                  </div>
-                  
-                  <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-center justify-content-between w-100">
-                    <ul class="navbar-nav mx-auto gap-2 gap-lg-4 d-flex align-items-stretch align-items-lg-center w-100 justify-content-center">
-                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#" onclick="fecharMenuEFocar('moedas')">
-                          <span class="icon-width">💰</span> <span>Moedas</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#" onclick="fecharMenuEFocar('comprimento')">
-                          <span class="icon-width">📏</span> <span>Comprimento</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#" onclick="fecharMenuEFocar('massa')">
-                          <span class="icon-width">⚖️</span> <span>Massa</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#" onclick="fecharMenuEFocar('tempo')">
-                          <span class="icon-width">⏱️</span> <span>Tempo</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#" onclick="fecharMenuEFocar('velocidade')">
-                          <span class="icon-width">🚀</span> <span>Velocidade</span>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#" onclick="fecharMenuEFocar('area')">
-                          <span class="icon-width">📐</span> <span>Área</span>
-                        </a>
-                      </li>
-                    </ul>
+<body>
+  <div id="overlay-fundo" onclick="removerFoco()"></div>
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm px-3" id="main-nav">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a class="navbar-brand fw-bold fs-4 text-white m-0" href="#">Convertify</a>
 
-                    <div class="dark-mode-container ms-lg-3 mt-4 mt-lg-0 border-top border-secondary pt-3 pt-lg-0 border-lg-0">
-                      <div class="form-check form-switch d-flex align-items-center gap-2 m-0 p-0" style="min-height: auto;">
-                        <span class="small text-white-50">🌞</span>
-                        <input class="form-check-input ms-0" type="checkbox" id="darkMode" style="cursor: pointer; width: 2.5rem; height: 1.25rem;" />
-                        <span class="small text-white-50">🌙</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </nav>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
 
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
-            <div
-              class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-2 mb-4 border-bottom"
-            >
-              <h1 class="h3 fw-bold">Painel de Conversão</h1>
-              <div class="text-muted small">
-                Quarta-feira, 28 de Janeiro de 2026
-              </div>
+      <div class="offcanvas offcanvas-end border-0" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header border-bottom border-secondary">
+          <h5 class="offcanvas-title fw-bold text-white">Menu Convertify</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-center justify-content-between w-100">
+          <ul
+            class="navbar-nav mx-auto gap-2 gap-lg-4 d-flex align-items-stretch align-items-lg-center w-100 justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#"
+                onclick="fecharMenuEFocar('moedas')">
+                <span class="icon-width">💰</span> <span>Moedas</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#"
+                onclick="fecharMenuEFocar('comprimento')">
+                <span class="icon-width">📏</span> <span>Comprimento</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#"
+                onclick="fecharMenuEFocar('massa')">
+                <span class="icon-width">⚖️</span> <span>Massa</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#"
+                onclick="fecharMenuEFocar('tempo')">
+                <span class="icon-width">⏱️</span> <span>Tempo</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center gap-3 px-3 py-2" href="#"
+                onclick="fecharMenuEFocar('velocidade')">
+                <span class="icon-width">🚀</span> <span>Velocidade</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="dark-mode-container ms-lg-3 mt-4 mt-lg-0 border-top border-secondary pt-3 pt-lg-0 border-lg-0">
+            <div class="form-check form-switch d-flex align-items-center gap-2 m-0 p-0" style="min-height: auto;">
+              <span class="small text-white-50">🌞</span>
+              <input class="form-check-input ms-0" type="checkbox" id="darkMode"
+                style="cursor: pointer; width: 2.5rem; height: 1.25rem;" />
+              <span class="small text-white-50">🌙</span>
             </div>
-
-            <div class="row g-4 mb-5">
-             <section id="moedas" class="col-12 col-md-6 col-xl-4 d-flex">
-  <div class="card converter-card card-moeda h-100 w-100">
-    <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
-      
-      <div id="preview-moedas" class="w-100" onclick="focarConversor('moedas')">
-        <div class="icon-box-large bg-green-light mx-auto mb-3" style="font-size: 3rem">
-          💰
-        </div>
-        <h2 class="h4 fw-bold">Moedas</h2>
-        <p class="text-muted">Clique para converter</p>
-      </div>
-
-      <div id="form-moedas" class="d-none w-100 text-start">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h2 class="h5 mb-0 fw-bold">Moedas</h2>
-          <button type="button" class="btn-close" onclick="removerFoco()"></button>
-        </div>
-
-        <input type="number" id="currency-amount" class="form-control mb-3" placeholder="0.00">
-
-        <div class="row g-2 mb-3 align-items-center">
-          <div class="col">
-            <select id="currency-from" class="form-select">
-              <option value="BRL" selected>BRL - Real</option>
-              <option value="USD">USD - Dólar</option>
-              <option value="EUR">EUR - Euro</option>
-              <option value="GBP">GBP - Libra</option>
-              <option value="JPY">JPY - Iene</option>
-              <option value="CAD">CAD - Dólar CAN</option>
-              <option value="AUD">AUD - Dólar AUS</option>
-              <option value="CHF">CHF - Franco Suíço</option>
-              <option value="CNY">CNY - Yuan Chinês</option>
-              <option value="ARS">ARS - Peso ARG</option>
-              <option value="MXN">MXN - Peso MEX</option>
-              <option value="CLP">CLP - Peso CHI</option>
-              <option value="COP">COP - Peso COL</option>
-              <option value="PEN">PEN - Sol Peruano</option>
-              <option value="UYU">UYU - Peso URU</option>
-              <option value="KRW">KRW - Won Sul-Cor.</option>
-              <option value="INR">INR - Rupia Indiana</option>
-              <option value="ZAR">ZAR - Rand Sul-Afr.</option>
-              <option value="TRY">TRY - Lira Turca</option>
-              <option value="SEK">SEK - Coroa Sueca</option>
-            </select>
-          </div>
-
-          <div class="col-auto text-muted fw-bold">→</div>
-
-          <div class="col">
-            <select id="currency-to" class="form-select">
-              <option value="USD" selected>USD - Dólar</option>
-              <option value="BRL">BRL - Real</option>
-              <option value="EUR">EUR - Euro</option>
-              <option value="GBP">GBP - Libra</option>
-              <option value="JPY">JPY - Iene</option>
-              <option value="CAD">CAD - Dólar CAN</option>
-              <option value="AUD">AUD - Dólar AUS</option>
-              <option value="CHF">CHF - Franco Suíço</option>
-              <option value="CNY">CNY - Yuan Chinês</option>
-              <option value="ARS">ARS - Peso ARG</option>
-              <option value="MXN">MXN - Peso MEX</option>
-              <option value="CLP">CLP - Peso CHI</option>
-              <option value="COP">COP - Peso COL</option>
-              <option value="PEN">PEN - Sol Peruano</option>
-              <option value="UYU">UYU - Peso URU</option>
-              <option value="KRW">KRW - Won Sul-Cor.</option>
-              <option value="INR">INR - Rupia Indiana</option>
-              <option value="ZAR">ZAR - Rand Sul-Afr.</option>
-              <option value="TRY">TRY - Lira Turca</option>
-              <option value="SEK">SEK - Coroa Sueca</option>
-            </select>
           </div>
         </div>
-
-        <div class="result-box mt-2 p-3 bg-light rounded text-center">
-          <span id="currency-result" class="fw-bold">--</span>
-        </div>
       </div>
-
     </div>
-  </div>
-</section>
-              <section id="comprimento" class="col-12 col-md-6 col-xl-4 d-flex">
-                <div class="card converter-card card-comp h-100 w-100">
-                  <div
-                    class="card-body p-4 d-flex flex-column justify-content-center text-center"
-                  >
-                    <div
-                      id="preview-comprimento"
-                      class="w-100"
-                      onclick="focarConversor('comprimento')"
-                    >
-                      <div
-                        class="icon-box-large bg-blue-light mx-auto mb-3"
-                        style="font-size: 3rem"
-                      >
-                        📏
-                      </div>
-                      <h2 class="h4 fw-bold">Medidas</h2>
-                      <p class="text-muted">Metros, Km, Milímetros...</p>
-                    </div>
-                    <div id="form-comprimento" class="d-none w-100 text-start">
-                      <div
-                        class="d-flex justify-content-between align-items-center mb-3"
-                      >
-                        <h2 class="h5 mb-0 fw-bold">Medidas</h2>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          onclick="removerFoco()"
-                        ></button>
-                      </div>
-                      <input
-                        type="number"
-                        id="length-value"
-                        class="form-control mb-3"
-                        placeholder="0"
-                      />
-                      <div class="row g-2 mb-3">
-                        <div class="col">
-                          <select id="length-from" class="form-select">
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                            <option value="dm">dm</option>
-                            <option value="m" selected>m</option>
-                            <option value="dam">dam</option>
-                            <option value="hm">hm</option>
-                            <option value="km">km</option>
-                          </select>
-                        </div>
-                        <div class="col-auto">→</div>
-                        <div class="col">
-                          <select id="length-to" class="form-select">
-                            <option value="mm">mm</option>
-                            <option value="cm">cm</option>
-                            <option value="dm">dm</option>
-                            <option value="m" selected>m</option>
-                            <option value="dam">dam</option>
-                            <option value="hm">hm</option>
-                            <option value="km">km</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div
-                        class="result-box mt-2 p-3 bg-light rounded text-center"
-                      >
-                        <span id="length-result" class="fw-bold">--</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
+  </nav>
 
-              <section id="tempo" class="col-12 col-md-6 col-xl-4 d-flex">
-                <div class="card converter-card card-tempo h-100 w-100">
-                  <div
-                    class="card-body p-4 d-flex flex-column justify-content-center text-center"
-                  >
-                    <div
-                      id="preview-tempo"
-                      class="w-100"
-                      onclick="focarConversor('tempo')"
-                    >
-                      <div
-                        class="icon-box-large bg-warning-light mx-auto mb-3"
-                        style="font-size: 3rem"
-                      >
-                        ⏱️
-                      </div>
-                      <h2 class="h4 fw-bold">Tempo</h2>
-                      <p class="text-muted">Horas, Minutos, Dias...</p>
-                    </div>
-                    <div id="form-tempo" class="d-none w-100 text-start">
-                      <div
-                        class="d-flex justify-content-between align-items-center mb-3"
-                      >
-                        <h2 class="h5 mb-0 fw-bold">Tempo</h2>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          onclick="removerFoco()"
-                        ></button>
-                      </div>
-                     
-                      <div class="row g-2 mb-3">
-                        <div class="col">
-                          <select id="time-from" class="form-select">
-                            <option value="ms">Milissegundo</option>
-                            <option value="s">Segundo</option>
-                            <option value="min">Minuto</option>
-                            <option value="h">Hora</option>
-                            <option value="d">Dia</option>
-                          </select>
-                        </div>
-                        <div class="col-auto">→</div>
-                        <div class="col">
-                          <select id="time-to" class="form-select">
-                            <option value="ms">Milissegundo</option>
-                            <option value="s">Segundo</option>
-                            <option value="min">Minuto</option>
-                            <option value="h">Hora</option>
-                            <option value="d">Dia</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div
-                        class="result-box mt-2 p-3 bg-light rounded text-center"
-                      >
-                        <span id="time-result" class="fw-bold">--</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section id="massa" class="col-12 col-md-6 col-xl-4 d-flex">
-                <div class="card converter-card card-massa h-100 w-100">
-                  <div
-                    class="card-body p-4 d-flex flex-column justify-content-center text-center"
-                  >
-                    <div
-                      id="preview-massa"
-                      class="w-100"
-                      onclick="focarConversor('massa')"
-                    >
-                      <div
-                        class="icon-box-large bg-purple-light mx-auto mb-3"
-                        style="font-size: 3rem"
-                      >
-                        ⚖️
-                      </div>
-                      <h2 class="h4 fw-bold">Massa</h2>
-                      <p class="text-muted">Gramas, Quilos, Toneladas...</p>
-                    </div>
-                    <div id="form-massa" class="d-none w-100 text-start">
-                      <div
-                        class="d-flex justify-content-between align-items-center mb-3"
-                      >
-                        <h2 class="h5 mb-0 fw-bold">Massa</h2>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          onclick="removerFoco()"
-                        ></button>
-                      </div>
-                      <input
-                        type="number"
-                        id="mass-value"
-                        class="form-control mb-3"
-                        placeholder="0.00"
-                      />
-                      <div class="row g-2 mb-3">
-                        <div class="col">
-                          <select id="mass-from" class="form-select">
-                            <option value="mg">mg</option>
-                            <option value="g">g</option>
-                            <option value="kg">kg</option>
-                            <option value="t">t</option>
-                          </select>
-                        </div>
-                        <div class="col-auto">→</div>
-                        <div class="col">
-                          <select id="mass-to" class="form-select">
-                            <option value="mg">mg</option>
-                            <option value="g">g</option>
-                            <option value="kg">kg</option>
-                            <option value="t">t</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div
-                        class="result-box mt-2 p-3 bg-light rounded text-center"
-                      >
-                        <span id="mass-result" class="fw-bold">--</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section id="velocidade" class="col-12 col-md-6 col-xl-4 d-flex">
-                <div class="card converter-card card-velocidade h-100 w-100">
-                  <div
-                    class="card-body p-4 d-flex flex-column justify-content-center text-center"
-                  >
-                    <div
-                      id="preview-velocidade"
-                      class="preview-animado w-100"
-                      onclick="focarConversor('velocidade')"
-                    >
-                      <div
-                        class="icon-box-large bg-info-light mx-auto mb-3"
-                        style="font-size: 3rem"
-                      >
-                        🚀
-                      </div>
-                      <h2 class="h4 fw-bold">Velocidade</h2>
-                      <p class="text-muted">Km/h, m/s, Mph</p>
-                    </div>
-                    <div
-                      id="form-velocidade"
-                      class="form-animado d-none w-100 text-start"
-                    >
-                      <div
-                        class="d-flex justify-content-between align-items-center mb-3"
-                      >
-                        <h2 class="h5 mb-0 fw-bold">Velocidade</h2>
-                        <button
-                          class="btn-close"
-                          onclick="removerFoco()"
-                        ></button>
-                      </div>
-                      <input
-                        type="number"
-                        id="vel_valor"
-                        class="form-control mb-3"
-                        placeholder="0"
-                      />
-                      <div class="row g-2 mb-3">
-                        <div class="col">
-                          <select id="vel_origem" class="form-select">
-                            <option value="kmh">Km/h</option>
-                            <option value="ms">m/s</option>
-                            <option value="mph">Mph</option>
-                          </select>
-                        </div>
-                        <div class="col-auto">→</div>
-                        <div class="col">
-                          <select id="vel_destino" class="form-select">
-                            <option value="ms">m/s</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div
-                        class="result-box mt-2 p-3 bg-light rounded text-center"
-                      >
-                        <span id="resultado_vel">--</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </main>
-        </div>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+    <div
+      class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-4 pb-2 mb-4 border-bottom">
+      <h1 class="h3 fw-bold">Painel de Conversão</h1>
+      <div class="text-muted small">
+        Quarta-feira, 28 de Janeiro de 2026
       </div>
+    </div>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="row g-4 mb-5">
+      <section id="moedas" class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card converter-card card-moeda h-100 w-100">
+          <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
 
-      <script src="../static/js/script.js"></script>
-    </body>
-  </html>
+            <div id="preview-moedas" class="w-100" onclick="focarConversor('moedas')">
+              <div class="icon-box-large bg-green-light mx-auto mb-3" style="font-size: 3rem">
+                💰
+              </div>
+              <h2 class="h4 fw-bold">Moedas</h2>
+              <p class="text-muted">Clique para converter</p>
+            </div>
+
+            <div id="form-moedas" class="d-none w-100 text-start">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 mb-0 fw-bold">Moedas</h2>
+                <button type="button" class="btn-close" onclick="removerFoco()"></button>
+              </div>
+
+              <input type="number" id="currency-amount" class="form-control mb-3" placeholder="0.00">
+
+              <div class="row g-2 mb-3 align-items-center">
+                <div class="col">
+                  <select id="currency-from" class="form-select">
+                    <option value="BRL" selected>BRL - Real</option>
+                    <option value="USD">USD - Dólar</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - Libra</option>
+                    <option value="JPY">JPY - Iene</option>
+                    <option value="CAD">CAD - Dólar CAN</option>
+                    <option value="AUD">AUD - Dólar AUS</option>
+                    <option value="CHF">CHF - Franco Suíço</option>
+                    <option value="CNY">CNY - Yuan Chinês</option>
+                    <option value="ARS">ARS - Peso ARG</option>
+                    <option value="MXN">MXN - Peso MEX</option>
+                    <option value="CLP">CLP - Peso CHI</option>
+                    <option value="COP">COP - Peso COL</option>
+                    <option value="PEN">PEN - Sol Peruano</option>
+                    <option value="UYU">UYU - Peso URU</option>
+                    <option value="KRW">KRW - Won Sul-Cor.</option>
+                    <option value="INR">INR - Rupia Indiana</option>
+                    <option value="ZAR">ZAR - Rand Sul-Afr.</option>
+                    <option value="TRY">TRY - Lira Turca</option>
+                    <option value="SEK">SEK - Coroa Sueca</option>
+                  </select>
+                </div>
+
+                <div class="col-auto text-muted fw-bold">→</div>
+
+                <div class="col">
+                  <select id="currency-to" class="form-select">
+                    <option value="USD" selected>USD - Dólar</option>
+                    <option value="BRL">BRL - Real</option>
+                    <option value="EUR">EUR - Euro</option>
+                    <option value="GBP">GBP - Libra</option>
+                    <option value="JPY">JPY - Iene</option>
+                    <option value="CAD">CAD - Dólar CAN</option>
+                    <option value="AUD">AUD - Dólar AUS</option>
+                    <option value="CHF">CHF - Franco Suíço</option>
+                    <option value="CNY">CNY - Yuan Chinês</option>
+                    <option value="ARS">ARS - Peso ARG</option>
+                    <option value="MXN">MXN - Peso MEX</option>
+                    <option value="CLP">CLP - Peso CHI</option>
+                    <option value="COP">COP - Peso COL</option>
+                    <option value="PEN">PEN - Sol Peruano</option>
+                    <option value="UYU">UYU - Peso URU</option>
+                    <option value="KRW">KRW - Won Sul-Cor.</option>
+                    <option value="INR">INR - Rupia Indiana</option>
+                    <option value="ZAR">ZAR - Rand Sul-Afr.</option>
+                    <option value="TRY">TRY - Lira Turca</option>
+                    <option value="SEK">SEK - Coroa Sueca</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="result-box mt-2 p-3 bg-light rounded text-center">
+                <span id="currency-result" class="fw-bold">--</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <section id="comprimento" class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card converter-card card-comp h-100 w-100">
+          <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
+            <div id="preview-comprimento" class="w-100" onclick="focarConversor('comprimento')">
+              <div class="icon-box-large bg-blue-light mx-auto mb-3" style="font-size: 3rem">
+                📏
+              </div>
+              <h2 class="h4 fw-bold">Medidas</h2>
+              <p class="text-muted">Metros, Km, Milímetros...</p>
+            </div>
+            <div id="form-comprimento" class="d-none w-100 text-start">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 mb-0 fw-bold">Medidas</h2>
+                <button type="button" class="btn-close" onclick="removerFoco()"></button>
+              </div>
+              <input type="number" id="length-value" class="form-control mb-3" placeholder="0" />
+              <div class="row g-2 mb-3">
+                <div class="col">
+                  <select id="length-from" class="form-select">
+                    <option value="mm">mm</option>
+                    <option value="cm">cm</option>
+                    <option value="dm">dm</option>
+                    <option value="m" selected>m</option>
+                    <option value="dam">dam</option>
+                    <option value="hm">hm</option>
+                    <option value="km">km</option>
+                  </select>
+                </div>
+                <div class="col-auto">→</div>
+                <div class="col">
+                  <select id="length-to" class="form-select">
+                    <option value="mm">mm</option>
+                    <option value="cm">cm</option>
+                    <option value="dm">dm</option>
+                    <option value="m" selected>m</option>
+                    <option value="dam">dam</option>
+                    <option value="hm">hm</option>
+                    <option value="km">km</option>
+                  </select>
+                </div>
+              </div>
+              <div class="result-box mt-2 p-3 bg-light rounded text-center">
+                <span id="length-result" class="fw-bold">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tempo" class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card converter-card card-tempo h-100 w-100">
+          <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
+
+            <div id="preview-tempo" class="w-100" onclick="focarConversor('tempo')">
+              <div class="icon-box-large bg-warning-light mx-auto mb-3" style="font-size: 3rem">
+                ⏱️
+              </div>
+              <h2 class="h4 fw-bold">Tempo</h2>
+              <p class="text-muted">Horas, Minutos, Dias...</p>
+            </div>
+
+            <div id="form-tempo" class="form-animado d-none w-100 text-start">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 mb-0 fw-bold">Tempo</h2>
+                <button type="button" class="btn-close" onclick="removerFoco()"></button>
+              </div>
+
+              <input type="number" id="time-value" class="form-control mb-3" placeholder="0" />
+
+              <div class="row g-2 mb-3">
+                <div class="col">
+                  <select id="time-from" class="form-select">
+                    <option value="ms">Milissegundo</option>
+                    <option value="s">Segundo</option>
+                    <option value="min">Minuto</option>
+                    <option value="h">Hora</option>
+                    <option value="d">Dia</option>
+                  </select>
+                </div>
+                <div class="col-auto d-flex align-items-center">→</div>
+                <div class="col">
+                  <select id="time-to" class="form-select">
+                    <option value="ms">Milissegundo</option>
+                    <option value="s">Segundo</option>
+                    <option value="min">Minuto</option>
+                    <option value="h">Hora</option>
+                    <option value="d">Dia</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="result-box mt-2 p-3 bg-light rounded text-center">
+                <span id="time-result" class="fw-bold">--</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="massa" class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card converter-card card-massa h-100 w-100">
+          <div class="card-body p-4 d-flex flex-column justify-content-center text-center">
+            <div id="preview-massa" class="w-100" onclick="focarConversor('massa')">
+              <div class="icon-box-large bg-purple-light mx-auto mb-3" style="font-size: 3rem">
+                ⚖️
+              </div>
+              <h2 class="h4 fw-bold">Massa</h2>
+              <p class="text-muted">Gramas, Quilos, Toneladas...</p>
+            </div>
+            <div id="form-massa" class="d-none w-100 text-start">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 mb-0 fw-bold">Massa</h2>
+                <button type="button" class="btn-close" onclick="removerFoco()"></button>
+              </div>
+              <input type="number" id="mass-value" class="form-control mb-3" placeholder="0.00" />
+              <div class="row g-2 mb-3">
+                <div class="col">
+                  <select id="mass-from" class="form-select">
+                    <option value="mg">mg</option>
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                    <option value="t">t</option>
+                  </select>
+                </div>
+                <div class="col-auto">→</div>
+                <div class="col">
+                  <select id="mass-to" class="form-select">
+                    <option value="mg">mg</option>
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                    <option value="t">t</option>
+                  </select>
+                </div>
+              </div>
+              <div class="result-box mt-2 p-3 bg-light rounded text-center">
+                <span id="mass-result" class="fw-bold">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="velocidade" class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card converter-card card-velocidade h-100 w-100">
+
+          <div class="card-body p-4 d-flex flex-column justify-content-center text-center" id="preview-velocidade"
+            onclick="focarConversor('velocidade')">
+            <div class="icon-box-large bg-info-light mx-auto mb-3" style="font-size: 3rem">
+              🚀
+            </div>
+            <h2 class="h4 fw-bold">Velocidade</h2>
+            <p class="text-muted">Km/h, m/s, Mph, Nós</p>
+          </div>
+
+          <div id="form-velocidade" class="form-animado d-none w-100 text-start p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h2 class="h5 mb-0 fw-bold">Velocidade</h2>
+              <button type="button" class="btn-close" onclick="removerFoco()"></button>
+            </div>
+
+            <input type="number" id="vel-value" class="form-control mb-3" placeholder="0" />
+
+            <div class="row g-2 mb-3 align-items-center">
+              <div class="col">
+                <select id="vel-from" class="form-select">
+                  <option value="kmh">km/h</option>
+                  <option value="ms">m/s</option>
+                  <option value="mph">mph</option>
+                  <option value="kn">kn</option>
+                </select>
+              </div>
+              <div class="col-auto">→</div>
+              <div class="col">
+                <select id="vel-to" class="form-select">
+                  <option value="kmh">km/h</option>
+                  <option value="ms">m/s</option>
+                  <option value="mph">mph</option>
+                  <option value="kn">kn</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="result-box mt-2 p-3 bg-light rounded text-center">
+              <span id="vel-result" class="fw-bold">--</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="../static/js/script.js"></script>
+</body>
+
+</html>

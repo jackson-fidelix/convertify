@@ -2,36 +2,36 @@
    CONFIGURAÇÕES GLOBAIS E UI
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-    const overlay = document.getElementById('overlay-fundo');
-    const body = document.body;
+  const overlay = document.getElementById('overlay-fundo');
+  const body = document.body;
 
-    // 1. Lógica de Focar Card ao clicar
-    const cards = document.querySelectorAll('.converter-card');
-    cards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Se clicar em input, botão ou select, não reinicia a animação de foco
-            if (e.target.closest('input, select, button, label')) return;
-            
-            const section = this.closest('section');
-            if (section) focarConversor(section.id);
-        });
+  // 1. Lógica de Focar Card ao clicar
+  const cards = document.querySelectorAll('.converter-card');
+  cards.forEach(card => {
+    card.addEventListener('click', function (e) {
+      // Se clicar em input, botão ou select, não reinicia a animação de foco
+      if (e.target.closest('input, select, button, label')) return;
+
+      const section = this.closest('section');
+      if (section) focarConversor(section.id);
     });
+  });
 
-    // 2. Fechar ao clicar no overlay
-    if (overlay) {
-        overlay.addEventListener('click', removerFoco);
+  // 2. Fechar ao clicar no overlay
+  if (overlay) {
+    overlay.addEventListener('click', removerFoco);
+  }
+
+  // 3. Sincronização de Dark Mode (Desktop e Mobile)
+  const temaSalvo = localStorage.getItem('theme') || 'light';
+  aplicarTema(temaSalvo);
+
+  document.addEventListener('change', (e) => {
+    if (e.target && (e.target.id === 'darkMode' || e.target.id === 'darkModeMobile')) {
+      const novoTema = e.target.checked ? 'dark' : 'light';
+      aplicarTema(novoTema);
     }
-
-    // 3. Sincronização de Dark Mode (Desktop e Mobile)
-    const temaSalvo = localStorage.getItem('theme') || 'light';
-    aplicarTema(temaSalvo);
-
-    document.addEventListener('change', (e) => {
-        if (e.target && (e.target.id === 'darkMode' || e.target.id === 'darkModeMobile')) {
-            const novoTema = e.target.checked ? 'dark' : 'light';
-            aplicarTema(novoTema);
-        }
-    });
+  });
 });
 
 /* ==========================================================================
@@ -39,81 +39,81 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 
 function aplicarTema(tema) {
-    const body = document.body;
-    const switches = document.querySelectorAll('#darkMode, #darkModeMobile');
-    const isDark = tema === 'dark';
+  const body = document.body;
+  const switches = document.querySelectorAll('#darkMode, #darkModeMobile');
+  const isDark = tema === 'dark';
 
-    if (isDark) {
-        body.classList.add('dark-theme');
-    } else {
-        body.classList.remove('dark-theme');
-    }
+  if (isDark) {
+    body.classList.add('dark-theme');
+  } else {
+    body.classList.remove('dark-theme');
+  }
 
-    switches.forEach(sw => sw.checked = isDark);
-    localStorage.setItem('theme', tema);
+  switches.forEach(sw => sw.checked = isDark);
+  localStorage.setItem('theme', tema);
 }
 
 function focarConversor(id) {
-    const overlay = document.getElementById("overlay-fundo");
-    const section = document.getElementById(id);
-    if (!section) return;
+  const overlay = document.getElementById("overlay-fundo");
+  const section = document.getElementById(id);
+  if (!section) return;
 
-    const card = section.querySelector(".converter-card");
-    const preview = document.getElementById(`preview-${id}`);
-    const form = document.getElementById(`form-${id}`);
+  const card = section.querySelector(".converter-card");
+  const preview = document.getElementById(`preview-${id}`);
+  const form = document.getElementById(`form-${id}`);
 
-    // Previne scroll e ativa overlay
-    document.body.style.overflow = "hidden";
-    overlay.style.display = "block";
-    setTimeout(() => overlay.style.opacity = "1", 10);
+  // Previne scroll e ativa overlay
+  document.body.style.overflow = "hidden";
+  overlay.style.display = "block";
+  setTimeout(() => overlay.style.opacity = "1", 10);
 
-    // Centraliza o card
-    card.classList.add("card-focado");
+  // Centraliza o card
+  card.classList.add("card-focado");
 
-    // Alterna visualização Interna
-    if (preview) preview.classList.add("escondido");
-    if (form) {
-        form.classList.remove("d-none");
-        setTimeout(() => form.classList.add("ativo"), 50);
-    }
+  // Alterna visualização Interna
+  if (preview) preview.classList.add("escondido");
+  if (form) {
+    form.classList.remove("d-none");
+    setTimeout(() => form.classList.add("ativo"), 50);
+  }
 }
 
 function removerFoco() {
-    const overlay = document.getElementById("overlay-fundo");
-    const cardFocado = document.querySelector(".card-focado");
+  const overlay = document.getElementById("overlay-fundo");
+  const cardFocado = document.querySelector(".card-focado");
 
-    if (cardFocado) {
-        const section = cardFocado.closest("section");
-        const id = section.id;
+  if (cardFocado) {
+    const section = cardFocado.closest("section");
+    const id = section.id;
 
-        overlay.style.opacity = "0";
-        cardFocado.style.opacity = "0";
-        cardFocado.style.transform = "translate(-50%, -45%) scale(0.95)";
+    overlay.style.opacity = "0";
+    cardFocado.style.opacity = "0";
+    cardFocado.style.transform = "translate(-50%, -45%) scale(0.95)";
 
-        setTimeout(() => {
-            cardFocado.classList.remove("card-focado");
-            cardFocado.style.opacity = "";
-            cardFocado.style.transform = "";
-            overlay.style.display = "none";
-            document.body.style.overflow = "";
+    setTimeout(() => {
+      cardFocado.classList.remove("card-focado");
+      cardFocado.style.opacity = "";
+      cardFocado.style.transform = "";
+      overlay.style.display = "none";
+      document.body.style.overflow = "";
 
-            const preview = document.getElementById(`preview-${id}`);
-            const form = document.getElementById(`form-${id}`);
-            
-            if (preview) preview.classList.remove("escondido");
-            if (form) {
-                form.classList.add("d-none");
-                form.classList.remove("ativo");
-            }
-        }, 300);
-    }
+      const preview = document.getElementById(`preview-${id}`);
+      const form = document.getElementById(`form-${id}`);
+
+      if (preview) preview.classList.remove("escondido");
+      if (form) {
+        form.classList.add("d-none");
+        form.classList.remove("ativo");
+      }
+    }, 300);
+  }
 }
 
 function fecharMenuEFocar(id) {
-    const menuElement = document.getElementById("offcanvasNavbar");
-    const menuBS = bootstrap.Offcanvas.getInstance(menuElement);
-    if (menuBS) menuBS.hide();
-    focarConversor(id);
+  const menuElement = document.getElementById("offcanvasNavbar");
+  const menuBS = bootstrap.Offcanvas.getInstance(menuElement);
+  if (menuBS) menuBS.hide();
+  focarConversor(id);
 }
 
 
@@ -163,11 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const fromSelect = document.getElementById("currency-from");
   const toSelect = document.getElementById("currency-to");
   const resultSpan = document.getElementById("currency-result");
-
-  console.log("[DEBUG] amountInput encontrado?", !!amountInput);
-  console.log("[DEBUG] fromSelect encontrado?", !!fromSelect);
-  console.log("[DEBUG] toSelect encontrado?", !!toSelect);
-  console.log("[DEBUG] resultSpan encontrado?", !!resultSpan);
 
   if (!amountInput || !fromSelect || !toSelect || !resultSpan) {
     console.error("[Moedas] ERRO: Um ou mais elementos não encontrados");
@@ -347,6 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
   toTime.addEventListener("change", convertTime);
 });
 
+// conversor de massa
 document.addEventListener("DOMContentLoaded", () => {
   const valueMass = document.getElementById("mass-value");
   const fromMass = document.getElementById("mass-from");
@@ -392,4 +388,54 @@ document.addEventListener("DOMContentLoaded", () => {
   valueMass.addEventListener("input", convertMass);
   fromMass.addEventListener("change", convertMass);
   toMass.addEventListener("change", convertMass);
+});
+
+// conversor de velocidade
+document.addEventListener("DOMContentLoaded", () => {
+  const valueVel = document.getElementById("vel-value");
+  const fromVel = document.getElementById("vel-from");
+  const toVel = document.getElementById("vel-to");
+  const resultVel = document.getElementById("vel-result");
+
+  console.log("[DEBUG] valueVel encontrado?", !!valueVel);
+  console.log("[DEBUG] fromVel encontrado?", !!fromVel);
+  console.log("[DEBUG] toVel encontrado?", !!toVel);
+  console.log("[DEBUG] resultSpan encontrado?", !!resultVel);
+
+  if (!valueVel || !fromVel || !toVel || !resultVel) return;
+
+
+  async function convertVelocity() {
+    const value = parseFloat(valueVel.value);
+
+    if (isNaN(value) || value <= 0) {
+      resultVel.innerText = "--";
+      return;
+    }
+
+    try {
+      const response = await fetch("/velocity/convert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          value: value,
+          from: fromVel.value,
+          to: toVel.value
+        })
+      });
+
+      if (!response.ok) throw new Error("Erro na conversão");
+
+      const data = await response.json();
+
+      resultVel.innerText = `${data.result} ${toVel.value}`;
+    } catch (err) {
+      console.error("[Velocidade] Erro:", err);
+      resultVel.innerText = "Erro";
+    }
+  }
+
+  valueVel.addEventListener("input", convertVelocity);
+  fromVel.addEventListener("change", convertVelocity);
+  toVel.addEventListener("change", convertVelocity);
 });
