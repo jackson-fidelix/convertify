@@ -394,11 +394,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const toVel   = document.getElementById("vel-to");
   const resultVel = document.getElementById("vel-result");
 
-  console.log("[DEBUG] valueVel encontrado?", !!valueVel);
-  console.log("[DEBUG] fromVel encontrado?", !!fromVel);
-  console.log("[DEBUG] toVel encontrado?", !!toVel);
-  console.log("[DEBUG] resultVel encontrado?", !!resultVel);
-
   if (!valueVel || !fromVel || !toVel || !resultVel) return;
 
 
