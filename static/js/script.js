@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("[DEBUG] valueVel encontrado?", !!valueVel);
   console.log("[DEBUG] fromVel encontrado?", !!fromVel);
   console.log("[DEBUG] toVel encontrado?", !!toVel);
-  console.log("[DEBUG] resultSpan encontrado?", !!resultVel);
+  console.log("[DEBUG] resultVel encontrado?", !!resultVel);
 
   if (!valueVel || !fromVel || !toVel || !resultVel) return;
 
