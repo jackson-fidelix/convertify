@@ -394,7 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const valueVel = document.getElementById("vel-value");
   const fromVel = document.getElementById("vel-from");
-  const toVel = document.getElementById("vel-to");
+  const toVel   = document.getElementById("vel-to");
   const resultVel = document.getElementById("vel-result");
 
   console.log("[DEBUG] valueVel encontrado?", !!valueVel);
@@ -406,36 +406,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   async function convertVelocity() {
-    const value = parseFloat(valueVel.value);
+      const value = parseFloat(valueVel.value);
 
-    if (isNaN(value) || value <= 0) {
-      resultVel.innerText = "--";
-      return;
+      if (isNaN(value) || value <= 0) {
+        resultVel.innerText = "--";
+        return;
+      }
+
+      try {
+        const response = await fetch("/velocity/convert", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            value: value,
+            from: fromVel.value,
+            to: toVel.value
+          })
+        });
+
+        if (!response.ok) throw new Error("Erro na conversão");
+
+          const data = await response.json();
+
+          resultVel.innerText = `${data.result} ${toVel.value}`;
+        } catch (err) {
+            console.error("[Velocidade] Erro:", err);
+            resultVel.innerText = "Erro";
+          }
     }
-
-    try {
-      const response = await fetch("/velocity/convert", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          value: value,
-          from: fromVel.value,
-          to: toVel.value
-        })
-      });
-
-      if (!response.ok) throw new Error("Erro na conversão");
-
-      const data = await response.json();
-
-      resultVel.innerText = `${data.result} ${toVel.value}`;
-    } catch (err) {
-      console.error("[Velocidade] Erro:", err);
-      resultVel.innerText = "Erro";
-    }
-  }
-
-  valueVel.addEventListener("input", convertVelocity);
-  fromVel.addEventListener("change", convertVelocity);
-  toVel.addEventListener("change", convertVelocity);
+    valueVel.addEventListener("input", convertVelocity);
+    fromVel.addEventListener("change", convertVelocity);
+    toVel.addEventListener("change", convertVelocity);
 });
