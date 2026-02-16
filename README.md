@@ -22,11 +22,13 @@ O objetivo do projeto é fornecer uma interface simples e intuitiva para convert
 ---
 
 🧠 Tecnologias utilizadas
+```
 	•	Python
 	•	Flask
 	•	Requests
 	•	HTML + CSS
 	•	API externa de câmbio
+```
 
 ---
 
