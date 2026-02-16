@@ -53,27 +53,27 @@ git clone https://github.com/jackson-fidelix/convertify.git
 cd convertify
 ```
 
-3) Criar ambiente virtual
+2) Criar ambiente virtual
 ```
 python -m venv venv
 ```
 
-5) Instalar dependências
+3) Instalar dependências
 ```
 pip install -r requirements.txt
 ```
 
-7) Criar arquivo .env
+4) Criar arquivo .env
 ```
 API_KEY=SUA_CHAVE_DA_API
 ```
 
-9) Rodar aplicação
+5) Rodar aplicação
 ```
 python app.py
 ```
 
-10) Acesse em:
+6) Acesse em:
 ```
 http://127.0.0.1:5000
 ```
