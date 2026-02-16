@@ -22,9 +22,8 @@ O objetivo do projeto é fornecer uma interface simples e intuitiva para convert
 ---
 
 🧠 Tecnologias utilizadas
-
-- Python 3
-	•Flask
+	•	Python
+	•	Flask
 	•	Requests
 	•	HTML + CSS
 	•	API externa de câmbio
