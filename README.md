@@ -1,6 +1,6 @@
 💱 Convertify
 
-Aplicação web para conversão de moedas em tempo real, desenvolvida com Flask.
+Aplicação web para conversão de moedas em tempo real, massa, medida, tempo e velocidade desenvolvida com Flask.
 O objetivo do projeto é fornecer uma interface simples e intuitiva para converter valores entre diferentes moedas utilizando dados atualizados de uma API externa.
 
 ---
