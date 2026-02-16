@@ -3,7 +3,7 @@
 Aplicação web para conversão de moedas em tempo real, desenvolvida com Flask.
 O objetivo do projeto é fornecer uma interface simples e intuitiva para converter valores entre diferentes moedas utilizando dados atualizados de uma API externa.
 
-⸻
+---
 
 📸 Demonstração
 
