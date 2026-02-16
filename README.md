@@ -22,7 +22,7 @@ O objetivo do projeto é fornecer uma interface simples e intuitiva para convert
 ---
 
 🧠 Tecnologias utilizadas
-````
+
 - Python 3
 	•Flask
 	•	Requests
